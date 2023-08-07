@@ -12,6 +12,9 @@
         <a id="home-icon" href="/">
             <img src="../Images/yu.png" alt="Home">
         </a>
+
+        <button class="toConj" onclick="navigateToConj()">Conjugation Practice</button>
+
         <h1 id="title">Japanese Vocabulary Practice</h1>
         <div id="main" class="main">
             <div class="wordBox">
@@ -83,7 +86,6 @@
         </div>
         <script type="module" src = "JVP.js"></script>
         <script>
-            //Back ↩
             const optionsGUI = document.getElementById('optionsGUI');
             const optionsButton = document.getElementById('optionsButton');
             const textbox = document.getElementById("textbox");
@@ -102,6 +104,9 @@
                     optionsButton.innerHTML = "Back ↩"
                     textbox.disabled = true;
                 }
+            }
+            function navigateToConj() {
+            window.location.href = "../JCP/JCP.html";
             }
         </script>
     </body>

@@ -13,6 +13,8 @@
             <img src="../Images/yu.png" alt="Home">
         </a>
 
+        <button class="toVocab" onclick="navigateToVocab()">Vocab Practice</button>
+
         <h1 id="title">Japanese Conjugation Practice</h1>
         
         <div id="main" class="main">
@@ -187,6 +189,9 @@
                 else {
                     optionsGUI.style.display = '';
                 }
+            }
+            function navigateToVocab() {
+            window.location.href = "../JVP/JVP.html";
             }
         </script>
     </body>

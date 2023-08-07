@@ -15,6 +15,22 @@ h1 {
     height: auto;
     filter:invert()
 }
+.toVocab {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    font-size: 15px;
+    padding: 0px;
+    border-radius: 20px;
+    border: 0px;
+    background-color: #3b3c3d;
+}
+.toVocab:hover {
+    background-color: #555758;
+}
 
 body {
     background-color: rgb(30, 31, 34);
