@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <title>
+           Japanese Vocabulary Practice 
+        </title>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400&display=swap" rel="stylesheet">
+        <link rel = "stylesheet" href = "JVP.css">
+    </head>
+    <body>
+        
+
+        <h1 id="title">Japanese Vocabulary Practice</h1>
+        
+        <div id="main" class="main">
+            <div class="wordBox">
+                <ruby id="word" class="word">する</ruby>
+                <p id="definition" class="definition">one day (いちにち), first of the month (ついたち)</p>
+                <p id="type" class="type"></p>
+            </div>
+            
+            <div id="answerBox" class="answer">
+                <p id="result" class="result">Correct</p>
+                <p id="correctAnswer" class="correct">する</p>
+            </div>
+
+            <div class="textbox">
+                <input type="text" id ="textbox" class="textbox">
+                <p id="bottom" class="bottom">Press any key to continue</p>
+            </div>
+
+            <button id="optionsButton" class="options" onmouseup="toggleOverlay()">⚙️Options</button>
+            <div id="optionsGUI" class="optionsGUI">
+                <div class="optionsMain">
+                    <div class="leftOptions">
+                        <div class="mainVerbBox">
+                            <p class="placeholder"></p>
+                        </div>
+                        <div class="verbTypeBox">
+                            <label class="checkBoxLabel">
+                                <input id="common" class="words" type="checkbox">Common words</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="n1" class="words" type="checkbox">JLPT N1</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="n2" class="words" type="checkbox">JLPT N2</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="n3" class="words" type="checkbox">JLPT N3</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="n4" class="words" type="checkbox">JLPT N4</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="n5" class="words" type="checkbox">JLPT N5</label>
+                        </div>
+                    </div>
+                    <div class="rightOptions">
+                        <p class="placeholder"></p>
+                        <label class="checkBoxLabel">
+                            <input id="plants" type="checkbox">Plants</label>
+                            <br>
+                        <label class="checkBoxLabel">
+                            <input id="vegetables" type="checkbox">Vegetables</label>
+                            <br>
+                        <label class="checkBoxLabel">
+                            <input id="animals" type="checkbox">Animals</label>
+                            <br>
+                        <label class="checkBoxLabel">
+                            <input id="prefectures"type="checkbox">Prefectures</label>
+                            <br>
+                    </div>
+                </div>
+            </div>
+
+            
+            
+        </div>
+        <script type="module" src = "JVP.js"></script>
+        <script>
+            //Back ↩
+            const optionsGUI = document.getElementById('optionsGUI');
+            const optionsButton = document.getElementById('optionsButton');
+            const textbox = document.getElementById("textbox");
+            optionsGUI.style.display = 'none';
+            function toggleOverlay() {
+                if (optionsGUI.style.display == '') { //hide
+                    optionsGUI.style.display = 'none';
+                    optionsButton.style.top = '440px';
+                    optionsButton.innerHTML = "⚙️Options";
+                    textbox.disabled = false;
+                    
+                }
+                else { //show
+                    optionsGUI.style.display = '';
+                    optionsButton.style.top = '760px';
+                    optionsButton.innerHTML = "Back ↩"
+                    textbox.disabled = true;
+                }
+            }
+        </script>
+    </body>
+</html>
