@@ -4,6 +4,19 @@
     left: 10px;
 }
 
+#discord {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 32px;
+    filter:invert();
+    transition: transform 0.3s ease;
+}
+
+#discord:hover {
+    transform: scale(1.05);
+}
+
 #home-icon img {
     width: 64px;
     height: auto;
@@ -19,7 +32,8 @@
     text-decoration: none;
     font-weight: bold;
     color: #333;
-    font-family: 'RefrigeratorDeluxe', sans-serif;
+    font-family: "RefrigeratorDeluxe", sans-serif;
+    font-weight: 200;
     font-size: 25px;
     padding: 12px 16px;
 }
@@ -80,8 +94,8 @@
 }
 
 @font-face {
-    font-family: 'RefrigeratorDeluxe';
-    src: url('Refrigerator Deluxe Light.otf') format('opentype');
+    font-family: "RefrigeratorDeluxe";
+    src: url("Fonts/Refrigerator Deluxe Light.otf") format("opentype");
     font-weight: normal;
     font-style: normal;
 }

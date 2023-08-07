@@ -1,17 +1,16 @@
-import {animals} from "./animals.js";
-import {common} from "./common.js";
-import {countries} from "./countries.js";
-import {n1} from "./n1.js";
-import {n2} from "./n2.js";
-import {n3} from "./n3.js";
-import {n4} from "./n4.js";
-import {n5} from "./n5.js";
-import {plants} from "./plants.js";
-import {vegetables} from "./vegetables.js";
-import {prefectures} from "./prefectures.js";
-import {romajiToHiraganaMap} from "./characterList.js";
+import {animals} from "./Words/animals.js";
+import {common} from "./Words/common.js";
+import {countries} from "./Words/countries.js";
+import {n1} from "./Words/n1.js";
+import {n2} from "./Words/n2.js";
+import {n3} from "./Words/n3.js";
+import {n4} from "./Words/n4.js";
+import {n5} from "./Words/n5.js";
+import {plants} from "./Words/plants.js";
+import {vegetables} from "./Words/vegetables.js";
+import {prefectures} from "./Words/prefectures.js";
+import {romajiToHiraganaMap} from "../characterList.js";
 
-//let wordPool = [animals, common, countries, n1, n2, n3, n4, n5, plants, vegetables, prefectures];
 let wordPool = [n5];
 
 const answerBox = document.getElementById('answerBox');
@@ -47,10 +46,10 @@ function question() {
   adjustFontSize(definition);
 
   if (randomWord.kana.includes(",")) {
-    answer = splitAnswers(randomWord.kana);
+    answer = splitAnswers(kataToHira(randomWord.kana));
   }
   else {
-    answer = randomWord.kana;
+    answer = kataToHira(randomWord.kana);
   }
   function answerCheck(event) { //defines function
     if (event.key === 'Enter') { //checks if right key was pressed
@@ -181,10 +180,18 @@ function convertToHiragana(romaji) {
   return hiragana;
 }
 
+function kataToHira(text) {
+  return text.split('').map(char => {
+      const code = char.charCodeAt(0);
+      return (code >= 0x30A1 && code <= 0x30F6) ? String.fromCharCode(code - 0x60) : char;
+  }).join('');
+}
+
 document.getElementById("n5").checked = true;
 
 const idToVariableMapping = {
   "common": common,
+  "countries": countries,
   "n1": n1,
   "n2": n2,
   "n3": n3,
