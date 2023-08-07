@@ -139,7 +139,7 @@ input[type="text"] {
 }
 
 input[type="text"]:disabled {
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(211, 211, 211);
 }
 
 p.bottom {
@@ -169,6 +169,11 @@ p.bottom {
 }
 .options:hover {
     background-color: #adada8;
+}
+
+.options:disabled {
+    background-color: #9e9e9a;
+    color: #818178;
 }
 
 .optionsGUI {
