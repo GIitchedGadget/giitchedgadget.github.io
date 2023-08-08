@@ -3,6 +3,22 @@ body {
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE/Edge */
+    overflow: hidden; /* Prevent scrolling while loading */
+}
+#preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 1000; /* Ensures it's on top of everything else */
+    transition: opacity 0.5s; /* Fade out transition */
+}
+
+body.content-loaded #preloader {
+    opacity: 0;
+    pointer-events: none; /* Ensures it doesn't interfere with user interactions */
 }
 
 img {
@@ -27,7 +43,7 @@ img {
     width: 32px;
     filter:invert();
     transition: transform 0.3s ease;
-    z-index: 1000;
+    z-index: 5;
     pointer-events: auto;
 }
 
@@ -45,7 +61,7 @@ img {
     color: whitesmoke;
     padding: 10px 20px;
     border-radius: 10px;
-    z-index: 1001;
+    z-index: 5;
     font-family: monospace;
     opacity: 0; 
     transition: opacity 0.3s ease; 

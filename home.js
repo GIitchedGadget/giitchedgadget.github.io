@@ -24,3 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
 });
+window.addEventListener('load', function() {
+    setTimeout(function() { // Optional delay before fading out
+        document.body.classList.add('content-loaded');
+    }, 100); // 500ms delay can be adjusted or removed if you don't want any delay.
+});
