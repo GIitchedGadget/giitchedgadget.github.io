@@ -134,3 +134,32 @@
     font-weight: normal;
     font-style: normal;
 }
+
+.elma {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Aligns to the top instead of center */
+    height: calc(100% - 150px); /* Adjusts the height to account for the 200px at the top */
+    padding-top: 150px; /* Adds 200px of space at the top */
+}
+
+@keyframes fadeInFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.elmaImage {
+    opacity: 0; /* Image is initially invisible */
+    animation: fadeInFromTop 1s forwards; /* Apply the animation */
+    width: 30vw;
+    height: auto;
+    filter: grayscale(95%);
+    border-radius: 7px;
+}
+
