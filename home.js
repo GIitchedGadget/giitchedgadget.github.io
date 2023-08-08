@@ -6,17 +6,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     discordElement.addEventListener('click', function() {
-        console.log("Discord image clicked!");
 
         const text = document.getElementById('textToCopy').textContent;
         navigator.clipboard.writeText(text).then(function() {
-            console.log('Text successfully copied to clipboard!');
 
-            // Show the tooltip
             const tooltip = document.getElementById('tooltip');
             tooltip.classList.add('visible');
 
-            // Hide the tooltip after 2 seconds
             setTimeout(function() {
                 tooltip.classList.remove('visible');
             }, 2000);
