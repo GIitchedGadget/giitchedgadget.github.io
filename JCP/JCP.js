@@ -2027,7 +2027,6 @@ function convertToHiragana(romaji) {
 }
 
 //define every checkbox
-const verbsMain = document.getElementById("verbsMain");
 const verbIchidan = document.getElementById("verbIchidan");
 const verbす = document.getElementById("verbす");
 const verbく = document.getElementById("verbく");
@@ -2047,7 +2046,6 @@ const verbAffirmative = document.getElementById("verbAffirmative");
 const verbNegative = document.getElementById("verbNegative");
 const verbCasual = document.getElementById("verbCasual");
 const verbFormal = document.getElementById("verbFormal");
-const adjMain = document.getElementById("adjMain");
 const adjい = document.getElementById("adjい");
 const adjな = document.getElementById("adjな");
 const adjException = document.getElementById("adjException");
@@ -2240,107 +2238,6 @@ function checkboxCheck() {
   }
 }
 
-function verbsMainChecked() {
-  let obj = {};
-  document.querySelectorAll('input[type=checkbox]').forEach((checkbox) => {
-      obj[checkbox.id] = checkbox;
-  });
-  if (verbsMain.checked == true) {
-    if (wordPool.indexOf("verbIchidan") == -1) {
-      wordPool.push("verbIchidan");
-      verbIchidan.checked = true;
-    }
-    if (wordPool.indexOf("verbす") == -1) {
-      wordPool.push("verbす");
-      verbす.checked = true;
-    }
-    if (wordPool.indexOf("verbく") == -1) {
-      wordPool.push("verbく");
-      verbく.checked = true;
-    }
-    if (wordPool.indexOf("verbむ") == -1) {
-      wordPool.push("verbむ");
-      verbむ.checked = true;
-    }
-    if (wordPool.indexOf("verbう") == -1) {
-      wordPool.push("verbう");
-      verbう.checked = true;
-    }
-    if (wordPool.indexOf("verbException") == -1) {
-      wordPool.push("verbException");
-      verbException.checked = true;
-    }
-    if (verbPool.indexOf("verbIchidan") == -1) {
-      verbPool.push("verbIchidan");
-    }
-    if (verbPool.indexOf("verbす") == -1) {
-      verbPool.push("verbす");
-    }
-    if (verbPool.indexOf("verbく") == -1) {
-      verbPool.push("verbく");
-    }
-    if (verbPool.indexOf("verbむ") == -1) {
-      verbPool.push("verbむ");
-    }
-    if (verbPool.indexOf("verbう") == -1) {
-      verbPool.push("verbう");
-    }
-    if (verbPool.indexOf("verbException") == -1) {
-      verbPool.push("verbException");
-    }
-  }
-  else {
-    for (let i = wordPool.length - 1; i >= 0; i--) {
-      if (wordPool[i].startsWith("v")) {
-        let object = wordPool[i];
-        obj[object].checked = false;
-        wordPool.splice(i , 1);
-      }
-    }
-    verbPool.length = 0;
-  }
-  checkboxCheck();
-}
-
-function adjMainChecked() {
-  let obj = {};
-  document.querySelectorAll('input[type=checkbox]').forEach((checkbox) => {
-      obj[checkbox.id] = checkbox;
-  });
-  if (adjMain.checked == true) {
-    if (wordPool.indexOf("adjい") == -1) {
-      wordPool.push("adjい");
-      adjい.checked = true;
-    }
-    if (wordPool.indexOf("adjな") == -1) {
-      wordPool.push("adjな");
-      adjな.checked = true;
-    }
-    if (wordPool.indexOf("adjException") == -1) {
-      wordPool.push("adjException");
-      adjException.checked = true;
-    }
-    if (adjPool.indexOf("adjい") == -1) {
-      adjPool.push("adjい");
-    }
-    if (adjPool.indexOf("adjな") == -1) {
-      adjPool.push("adjな");
-    }
-    if (adjPool.indexOf("adjException") == -1) {
-      adjPool.push("adjException");
-    }
-  }
-  else {
-    for (let i = wordPool.length - 1; i >= 0; i--) {
-      if (wordPool[i].startsWith("a")) {
-        let object = wordPool[i];
-        obj[object].checked = false;
-        wordPool.splice(i , 1);
-      }
-    }
-    adjPool.length = 0;
-  }
-}
 
 verbIchidan.addEventListener('mouseup', () => {wordList(event.target)});
 verbす.addEventListener('mouseup', () => {wordList(event.target)});
@@ -2374,9 +2271,6 @@ adjNegative.addEventListener('mouseup', () => {adjConjList(event.target)});
 adjCasual.addEventListener('mouseup', () => {adjConjList(event.target)});
 adjFormal.addEventListener('mouseup', () => {adjConjList(event.target)});
 nominalized.addEventListener('mouseup', () => {adjSpList(event.target)});
-
-verbsMain.addEventListener('mouseup', () => {verbsMainChecked()});
-adjMain.addEventListener('mouseup', () => {adjMainChecked()});
 
 furigana.addEventListener('mouseup', () => {manageFurigana(event.target)});
 
