@@ -162,12 +162,12 @@ img {
 
 @font-face {
     font-family: "RefrigeratorDeluxe";
-    src: url("Fonts/Refrigerator Deluxe Light.otf") format("opentype");
+    src: url("../Fonts/Refrigerator Deluxe Light.otf") format("opentype");
     font-weight: normal;
     font-style: normal;
 }
 
-.elma {
+.amy {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -186,7 +186,7 @@ img {
     }
 }
 
-.elmaImage {
+.amyImage {
     opacity: 0;
     animation: fadeInFromTop 1s forwards;
     min-width: 500px;
