@@ -2158,7 +2158,7 @@ function specialList(element) {
 
 function adjSpList(element) {
   if (element.checked) {
-    if (element.id == "adjて" || "adverb" || "nominalized") {
+    if (element.id == "adjて" || element.id == "adverb" || element.id == "nominalized") {
       adjTenses.push(element.id);
     }
     adjSpConjPool.push(element.id);
@@ -2166,7 +2166,7 @@ function adjSpList(element) {
   else {
     let index;
 
-    if (element.id == "verbて" || "adverb" || "nominalized") {
+    if (element.id == "verbて" || element.id == "adverb" || element.id == "nominalized") {
       index = adjTenses.indexOf(element.id);
       if(index !== -1) adjTenses.splice(index, 1);
     }
@@ -2195,12 +2195,6 @@ function wordList(element) {
     else {
       adjPool.push(element.id);
     }
-    if (verbPool.length > 0) {
-      verbsMain.checked = true;
-    }
-    if (adjPool.length > 0) {
-      adjMain.checked = true;
-    }
   }
   else {
     if (index !== -1) {
@@ -2208,25 +2202,12 @@ function wordList(element) {
     }
     if (verbIndex !== -1 && verbIndex !== null) {
       verbPool.splice(verbIndex, 1);
-      if (verbPool.length == 0) {
-        verbsMain.checked = false;
-      }
-      else {
-        verbsMain.checked = true;
-      }
     }
     if (adjIndex !== -1 && adjIndex !== null) {
       adjPool.splice(adjIndex, 1);
-      if (adjPool.length == 0) {
-        adjMain.checked = false;
-      }
-      else {
-        adjMain.checked = true;
-      }
     }
   }
   checkboxCheck(element);
-
 }
 
 function checkboxCheck() {
@@ -2239,40 +2220,40 @@ function checkboxCheck() {
 }
 
 
-verbIchidan.addEventListener('mouseup', () => {wordList(event.target)});
-verbす.addEventListener('mouseup', () => {wordList(event.target)});
-verbく.addEventListener('mouseup', () => {wordList(event.target)});
-verbむ.addEventListener('mouseup', () => {wordList(event.target)});
-verbう.addEventListener('mouseup', () => {wordList(event.target)});
-verbException.addEventListener('mouseup', () => {wordList(event.target)});
-verbPotential.addEventListener('mouseup', () => {specialList(event.target)});
-verbPassive.addEventListener('mouseup', () => {specialList(event.target)});
-verbCausative.addEventListener('mouseup', () => {specialList(event.target)});
-verbCausativePassive.addEventListener('mouseup', () => {specialList(event.target)});
-verbImperative.addEventListener('mouseup', () => {specialList(event.target)});
-verbVolitional.addEventListener('mouseup', () => {specialList(event.target)});
-verbPresent.addEventListener('mouseup', () => {conjList(event.target)});
-verbPast.addEventListener('mouseup', () => {conjList(event.target)});
-verbて.addEventListener('mouseup', () => {specialList(event.target)});
-verbAffirmative.addEventListener('mouseup', () => {conjList(event.target)});
-verbNegative.addEventListener('mouseup', () => {conjList(event.target)});
-verbCasual.addEventListener('mouseup', () => {conjList(event.target)});
-verbFormal.addEventListener('mouseup', () => {conjList(event.target)});
+verbIchidan.addEventListener('click', () => {wordList(event.target)});
+verbす.addEventListener('click', () => {wordList(event.target)});
+verbく.addEventListener('click', () => {wordList(event.target)});
+verbむ.addEventListener('click', () => {wordList(event.target)});
+verbう.addEventListener('click', () => {wordList(event.target)});
+verbException.addEventListener('click', () => {wordList(event.target)});
+verbPotential.addEventListener('click', () => {specialList(event.target)});
+verbPassive.addEventListener('click', () => {specialList(event.target)});
+verbCausative.addEventListener('click', () => {specialList(event.target)});
+verbCausativePassive.addEventListener('click', () => {specialList(event.target)});
+verbImperative.addEventListener('click', () => {specialList(event.target)});
+verbVolitional.addEventListener('click', () => {specialList(event.target)});
+verbPresent.addEventListener('click', () => {conjList(event.target)});
+verbPast.addEventListener('click', () => {conjList(event.target)});
+verbて.addEventListener('click', () => {specialList(event.target)});
+verbAffirmative.addEventListener('click', () => {conjList(event.target)});
+verbNegative.addEventListener('click', () => {conjList(event.target)});
+verbCasual.addEventListener('click', () => {conjList(event.target)});
+verbFormal.addEventListener('click', () => {conjList(event.target)});
 
-adjい.addEventListener('mouseup', () => {wordList(event.target)});
-adjな.addEventListener('mouseup', () => {wordList(event.target)});
-adjException.addEventListener('mouseup', () => {wordList(event.target)});
-adjPresent.addEventListener('mouseup', () => {adjConjList(event.target)});
-adjPast.addEventListener('mouseup', () => {adjConjList(event.target)});
-adjて.addEventListener('mouseup', () => {adjSpList(event.target)});
-adverb.addEventListener('mouseup', () => {adjSpList(event.target)});
-adjAffirmative.addEventListener('mouseup', () => {adjConjList(event.target)});
-adjNegative.addEventListener('mouseup', () => {adjConjList(event.target)});
-adjCasual.addEventListener('mouseup', () => {adjConjList(event.target)});
-adjFormal.addEventListener('mouseup', () => {adjConjList(event.target)});
-nominalized.addEventListener('mouseup', () => {adjSpList(event.target)});
+adjい.addEventListener('click', () => {wordList(event.target)});
+adjな.addEventListener('click', () => {wordList(event.target)});
+adjException.addEventListener('click', () => {wordList(event.target)});
+adjPresent.addEventListener('click', () => {adjConjList(event.target)});
+adjPast.addEventListener('click', () => {adjConjList(event.target)});
+adjて.addEventListener('click', () => {adjSpList(event.target)});
+adverb.addEventListener('click', () => {adjSpList(event.target)});
+adjAffirmative.addEventListener('click', () => {adjConjList(event.target)});
+adjNegative.addEventListener('click', () => {adjConjList(event.target)});
+adjCasual.addEventListener('click', () => {adjConjList(event.target)});
+adjFormal.addEventListener('click', () => {adjConjList(event.target)});
+nominalized.addEventListener('click', () => {adjSpList(event.target)});
 
-furigana.addEventListener('mouseup', () => {manageFurigana(event.target)});
+furigana.addEventListener('click', () => {manageFurigana(event.target)});
 
 function manageFurigana(element) {
   const furiganaElements = document.querySelectorAll('rt');
