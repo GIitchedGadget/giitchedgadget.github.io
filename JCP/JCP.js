@@ -154,129 +154,71 @@ function reset(event) {
 function generateConjugation(specialConjForms, ConjForms, spConjPool, ConjPool) {
   const validConjugations = Object.keys(ConjForms).filter(conj => ConjPool.includes(conj));
   const validSpecialConjugations = Object.keys(specialConjForms).filter(conj => spConjPool.includes(conj));
-  let aff = null;
-  if (verbTenses.length == 1 && verbTenses.includes("verbて") && validSpecialConjugations.includes("verbて")) {
-    if (validConjugations.includes("verbAffirmative") && validConjugations.includes("verbNegative")) {
-      if (RNG(2)) {
-        ConjForms.verbAffirmative = false;
-      }
-    }
-    else if (validConjugations.includes("verbAffirmative")) {
-      ConjForms.verbAffirmative = true;
-    }
-    else if (validConjugations.includes("verbNegative")) {
-      ConjForms.verbAffirmative = false;
-    }
-    return { ...ConjForms, ...specialConjForms };
-  }
-  if (validConjugations.includes("verbPresent") && validConjugations.includes("verbPast") && validSpecialConjugations.includes("verbて")) { //decides past or present
-    if (RNG(5)) {
+
+  if (validSpecialConjugations.includes("verbて") && RNG(5)) {
       specialConjForms.verbて = true;
-    }
-    else {
+  }
+
+  // Handle tense (present or past)
+  if (validConjugations.includes("verbPresent") && validConjugations.includes("verbPast")) {
       ConjForms.verbPresent = RNG(2);
-    }
-  }
-  else if (validConjugations.includes("verbPresent") && validSpecialConjugations.includes("verbて")) { //always present
-    if (RNG(5)) {
-      ConjForms.verbて = true;
-    }
-    else {
+  } else if (validConjugations.includes("verbPresent")) {
       ConjForms.verbPresent = true;
-    }
-  }
-  else if (validConjugations.includes("verbPast") && validSpecialConjugations.includes("verbて")) { //always past
-    if (RNG(5)) {
-      ConjForms.verbて = true;
-    }
-    else {
+  } else if (validConjugations.includes("verbPast")) {
       ConjForms.verbPresent = false;
-    }
   }
-  else if (validConjugations.includes("verbPresent") && validConjugations.includes("verbPast")) {
-    ConjForms.verbPresent = RNG(2);
-  }
-  else if (validConjugations.includes("verbPresent")) {
-    ConjForms.verbPresent = true;
-  }
-  else if (validConjugations.includes("verbPast")) {
-    ConjForms.verbPresent = false;
-  }
-  if (validConjugations.includes("verbAffirmative") && validConjugations.includes("verbNegative")) { //decides aff or neg
-    if (RNG(2)) {
+
+  // Handle affirmation (affirmative or negative)
+  if (validConjugations.includes("verbAffirmative") && validConjugations.includes("verbNegative")) {
+      ConjForms.verbAffirmative = RNG(2);
+  } else if (validConjugations.includes("verbAffirmative")) {
       ConjForms.verbAffirmative = true;
-      aff = true;
-    }
-    else {
+  } else if (validConjugations.includes("verbNegative")) {
       ConjForms.verbAffirmative = false;
-      aff = false;
-    }
   }
-  else if (validConjugations.includes("verbAffirmative")) {
-    ConjForms.verbAffirmative = true;
-    aff = true;
+
+  // Handle formality (formal or casual)
+  if (validConjugations.includes("verbFormal") && validConjugations.includes("verbCasual")) {
+      ConjForms.verbFormal = RNG(2);
+  } else if (validConjugations.includes("verbFormal")) {
+      ConjForms.verbFormal = true;
+  } else if (validConjugations.includes("verbCasual")) {
+      ConjForms.verbFormal = false;
   }
-  else if (validConjugations.includes("verbNegative")) {
-    ConjForms.verbAffirmative = false;
-    aff = false;
+
+  // Handle other special conjugations, if て-form wasn't chosen
+  if (!specialConjForms.verbて) {
+      const randomIndex = Math.floor(Math.random() * validSpecialConjugations.length);
+      const selectedConjugation = validSpecialConjugations[randomIndex];
+      specialConjForms[selectedConjugation] = true;
+
+      // Reset certain forms if specific special conjugation is chosen
+      if (selectedConjugation === "verbImperative" || selectedConjugation === "verbVolitional") {
+          ConjForms.verbPresent = null;
+          ConjForms.verbPast = null;
+          ConjForms.verbFormal = null;
+          ConjForms.verbCasual = null;
+          if (selectedConjugation === "verbVolitional") {
+              ConjForms.verbAffirmative = null;
+              ConjForms.verbNegative = null;
+          }
+      }
   }
-  if (validConjugations.includes("verbFormal") && validConjugations.includes("verbCasual")) { //decides formal or casual
-    ConjForms.verbFormal = RNG(2);
-  }
-  else if (validConjugations.includes("verbFormal")) {
-    ConjForms.verbFormal = true;
-  }
-  else if (validConjugations.includes("verbCasual")) {
-    ConjForms.verbFormal = false;
-  }
-  if (!specialConjForms.verbて) { //special conj
-    const randomIndex = getRandomIndex(validSpecialConjugations);
-    let selectedConjugation = validSpecialConjugations[randomIndex];
-    if (selectedConjugation == "verbPotential") {
-      specialConjForms.verbPotential = true;
-    }
-    else if (selectedConjugation == "verbPassive") {
-      specialConjForms.verbPassive = true;
-    }
-    else if (selectedConjugation == "verbCausative") {
-      specialConjForms.verbCausative = true;
-    }
-    else if (selectedConjugation == "verbCausativePassive") {
-      specialConjForms.verbCausativePassive = true;
-    }
-    else if (selectedConjugation == "verbImperative") {
-      specialConjForms.verbImperative = true;
-      ConjForms.verbPresent = null;
-      ConjForms.verbPast = null;
-      ConjForms.verbFormal = null;
-      ConjForms.verbCasual = null;
-    }
-    else { //volitional case
-      specialConjForms.verbVolitional = true;
-      ConjForms.verbPresent = null;
-      ConjForms.verbPast = null;
-      ConjForms.verbAffirmative = null;
-      ConjForms.verbNegative = null;
-    }
-  }
+
+  // Reset some forms if て-form was chosen
   if (specialConjForms.verbて) {
-    if (aff == true) {
-      ConjForms.verbAffirmative = null;
-    }
-    else if (aff == false) {
-      ConjForms.verbAffirmative = false;
-    }
-    ConjForms.verbFormal = null;
-    ConjForms.verbPresent = null;
-    specialConjForms.verbPotential = null;
-    specialConjForms.verbPassive = null;
-    specialConjForms.verbCausative = null;
-    specialConjForms.verbCausativePassive = null;
-    specialConjForms.verbImperative = null;
-    specialConjForms.verbVolitional = null;
+      ConjForms.verbFormal = null;
+      ConjForms.verbPresent = null;
+      specialConjForms.verbPotential = null;
+      specialConjForms.verbPassive = null;
+      specialConjForms.verbCausative = null;
+      specialConjForms.verbCausativePassive = null;
+      specialConjForms.verbImperative = null;
+      specialConjForms.verbVolitional = null;
   }
   return { ...ConjForms, ...specialConjForms };
 }
+
 
 function generateAdjConj(adjSpConjForms, adjConjForms, adjSpConjPool, adjConjPool) {
   const validConjugations = Object.keys(adjConjForms).filter(conj => adjConjPool.includes(conj));
@@ -417,7 +359,7 @@ function generateAruConj() {
   }
   else if (validConjugations.includes("verbPresent") && validSpecialConjugations.includes("verbて")) { //always present
     if (RNG(5)) {
-      ConjForms.verbて = true;
+      specialConjForms.verbて = true;
     }
     else {
       ConjForms.verbPresent = true;
@@ -425,7 +367,7 @@ function generateAruConj() {
   }
   else if (validConjugations.includes("verbPast") && validSpecialConjugations.includes("verbて")) { //always past
     if (RNG(5)) {
-      ConjForms.verbて = true;
+      specialConjForms.verbて = true;
     }
     else {
       ConjForms.verbPresent = false;
