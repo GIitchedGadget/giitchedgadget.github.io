@@ -216,6 +216,8 @@ function generateConjugation(specialConjForms, ConjForms, spConjPool, ConjPool) 
       specialConjForms.verbImperative = null;
       specialConjForms.verbVolitional = null;
   }
+  //console.log(ConjForms);
+  //console.log(specialConjForms);
   return { ...ConjForms, ...specialConjForms };
 }
 
@@ -425,6 +427,8 @@ function generateAruConj() {
     specialConjForms.verbImperative = null;
     specialConjForms.verbVolitional = null;
   }
+  //console.log(ConjForms);
+  //onsole.log(specialConjForms);
   return { ...ConjForms, ...specialConjForms };
 }
 
@@ -759,7 +763,7 @@ function conjugate(verbObject, conjugations) {
       }
     }
   }
-  else if (!conjugations.verbAffirmative) { //negative verbs
+  else if (conjugations.verbAffirmative == false) { //negative verbs
     if (conjugations.verbImperative) { //negative imperative
       return (verbObject.kana.concat("な"));
     }
@@ -1821,16 +1825,16 @@ function conjugateExv(verbObject, conjugations) {
     }
     else { //affirmative casual past
       if (verbObject.kana == "する") {
-        return ""
+        return "した"
       }
       else if (verbObject.kana == "くる") {
-        return ""
+        return "きた"
       }
       else if (verbObject.kana == "いく") {
-        return ""
+        return "いった"
       }
       else if (verbObject.kana == "ある") {
-        return ""
+        return "あった"
       }
     }
   }

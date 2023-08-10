@@ -15,13 +15,14 @@ export const words = {
         {"kanji":"助<rt>たす<\/rt>ける","type":"ru","eng":"to help", "kana":"たすける"},
         {"kanji":"見<rt>み<\/rt>る","type":"ru","eng":"to see, to look", "kana":"みる"},
         {"kanji":"開<rt>あ<\/rt>ける","type":"ru","eng":"to open", "kana":"あける"},
+        {"kanji":"上<rt>あ<\/rt>げる","type":"ru","eng":"to give", "kana":"あげる"},
         {"kanji":"覚<rt>おぼ<\/rt>える","type":"ru","eng":"to remember", "kana":"おぼえる"},
         {"kanji":"寝<rt>ね<\/rt>る","type":"ru","eng":"to sleep", "kana":"ねる"},
         {"kanji":"眠<rt>ねむ<\/rt>る","type":"ru","eng":"to fall asleep", "kana":"ねむる"},
         {"kanji":"閉<rt>し<\/rt>める","type":"ru","eng":"to close", "kana":"しめる"},
         {"kanji":"着<rt>き<\/rt>る","type":"ru","eng":"to put on, to wear (shirt, jacket, etc.)", "kana":"きる"},
         {"kanji":"信<rt>しん<\/rt>じる","type":"ru","eng":"to believe, to place faith (in)", "kana":"しんじる"},
-        {"kanji":"越<rt>こ<\/rt>える","type":"u","eng":"to exceed, to go beyond", "kana":"こえる"},
+        {"kanji":"越<rt>こ<\/rt>える","type":"ru","eng":"to exceed, to go beyond", "kana":"こえる"},
     ],
     "verbす": [
         {"kanji":"話<rt>はな<\/rt>す","type":"u","eng":"to speak", "kana":"はなす"},
@@ -35,7 +36,7 @@ export const words = {
     ],
     "verbく": [
         {"kanji":"続<rt>つづ<\/rt>く","type":"u","eng":"to continue, to proceed", "kana":"つづく"},
-        {"kanji":"開<rt>ひら<\/rt>く","type":"ru","eng":"to open", "kana":"ひらく"},
+        {"kanji":"開<rt>ひら<\/rt>く","type":"u","eng":"to open", "kana":"ひらく"},
         {"kanji":"泳<rt>およ<\/rt>ぐ","type":"u","eng":"to swim", "kana":"およぐ"},
         {"kanji":"聞<rt>き<\/rt>く","type":"u","eng":"to hear, to listen", "kana":"きく"},
         {"kanji":"引<rt>ひ<\/rt>く","type":"u","eng":"to pull"},
@@ -69,8 +70,6 @@ export const words = {
     ],
     "verbう": [
         {"kanji":"歌<rt>うた<\/rt>う","type":"u","eng":"to sing", "kana":"うたう"},
-        {"kanji":"問<rt>と<\/rt>う","type":"irv","eng":"to ask, to accuse", "kana":"とう"},
-        {"kanji":"上<rt>あ<\/rt>げる","type":"ru","eng":"to give", "kana":"あげる"},
         {"kanji":"成<rt>な<\/rt>る","type":"u","eng":"to become", "kana":"なる"},
         {"kanji":"乗<rt>の<\/rt>る","type":"u","eng":"to board, to ride", "kana":"のる"},
         {"kanji":"掛<rt>か<\/rt>かる","type":"u","eng":"to hang", "kana":"かかる"},
