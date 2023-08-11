@@ -79,6 +79,7 @@ function question() {
   document.getElementById("definition").innerHTML = randomWord.eng;
   document.getElementById("targetInflections").innerHTML = conjugationList;
   document.getElementById("type").innerHTML = "";
+  manageFurigana(document.getElementById("furigana"));
 
   function answerCheck(event) { //defines function
     if (event.key === 'Enter') { //checks if right key was pressed
@@ -216,8 +217,6 @@ function generateConjugation(specialConjForms, ConjForms, spConjPool, ConjPool) 
       specialConjForms.verbImperative = null;
       specialConjForms.verbVolitional = null;
   }
-  //console.log(ConjForms);
-  //console.log(specialConjForms);
   return { ...ConjForms, ...specialConjForms };
 }
 
@@ -229,19 +228,18 @@ function generateAdjConj(adjSpConjForms, adjConjForms, adjSpConjPool, adjConjPoo
   if (validSpecialConjugations.includes("adjて") && adjTenses.length == 1 && adjTenses.includes("adjて")) {
     adjSpConjForms.adjて = true;
     if (validConjugations.includes("adjAffirmative") && validConjugations.includes("adjNegative")) {
-      adjSpConjForms.adjAffirmative = RNG(2);
+      if (RNG(2)) {
+        adjConjForms.adjAffirmative = false;
+      }
     }
-    else if (adjSpConjForms.adjAffirmative) {
-      adjSpConjForms.adjAffirmative = true;
-    }
-    else {
-      adjSpConjForms.adjAffirmative = false;
+    else if (adjSpConjForms.adjAffirmative == false) {
+      adjConjForms.adjAffirmative = false;
     }
     return { ...adjSpConjForms, ...adjConjForms };
   }
   if (validConjugations.includes("adjPresent") && validConjugations.includes("adjPast") && validSpecialConjugations.includes("adjて")) {
     if (RNG(5)) {
-      adjConjForms.adjて = true;
+      adjSpConjForms.adjて = true;
     }
     else {
       adjConjForms.adjPresent = RNG(2);
@@ -249,7 +247,7 @@ function generateAdjConj(adjSpConjForms, adjConjForms, adjSpConjPool, adjConjPoo
   }
   else if (validConjugations.includes("adjPresent") && validSpecialConjugations.includes("adjて")) {
     if (RNG(5)) {
-      adjConjForms.adjて = true;
+      adjSpConjForms.adjて = true;
     }
     else {
       adjConjForms.adjPresent = true;
@@ -257,7 +255,7 @@ function generateAdjConj(adjSpConjForms, adjConjForms, adjSpConjPool, adjConjPoo
   }
   else if (validConjugations.includes("adjPast") && validSpecialConjugations.includes("adjて")) {
     if (RNG(5)) {
-      adjConjForms.adjて = true;
+      adjSpConjForms.adjて = true;
     }
     else {
       adjConjForms.adjPresent = false;
@@ -427,8 +425,6 @@ function generateAruConj() {
     specialConjForms.verbImperative = null;
     specialConjForms.verbVolitional = null;
   }
-  //console.log(ConjForms);
-  //onsole.log(specialConjForms);
   return { ...ConjForms, ...specialConjForms };
 }
 
@@ -779,7 +775,7 @@ function conjugate(verbObject, conjugations) {
         }
         else { //negative causativePassive present casual
           if (verbObject.type == "ru") { //ichidan
-            return (verbObject.kana.substring(0,verbObject.length - 1) + "させられない");
+            return (getStem(verbObject).concat("させられない"));
           }
           else { //godan
             return (verbObject.kana.substring(0,verbObject.kana.length - 1).concat(inflect(verbObject, "a").concat("せられない")));
@@ -1073,36 +1069,36 @@ function conjugate(verbObject, conjugations) {
       if (conjugations.verbPresent) {
         if (conjugations.verbFormal) { //affirmative potential formal present
           if (verbObject.type == "ru") { //ichidan
-            return (getStem(verbObject).concat("られません"));
+            return (getStem(verbObject).concat("られます"));
           }
           else { //godan
-            return (verbObject.kana.substring(0,verbObject.kana.length - 1).concat(inflect(verbObject, "e").concat("ません")));
+            return (verbObject.kana.substring(0,verbObject.kana.length - 1).concat(inflect(verbObject, "e").concat("ます")));
           }
         }
         else { //affirmative potential present casual
           if (verbObject.type == "ru") { //ichidan
-            return (getStem(verbObject).concat("られない"));
+            return (getStem(verbObject).concat("られる"));
           }
           else { //godan
-            return (verbObject.kana.substring(0,verbObject.kana.length - 1).concat(inflect(verbObject, "e").concat("ない")));
+            return (verbObject.kana.substring(0,verbObject.kana.length - 1).concat(inflect(verbObject, "e").concat("る")));
           }
         }
       }
       else {
         if (conjugations.verbFormal) { //affirmative potential past formal
           if (verbObject.type == "ru") { //ichidan
-            return (getStem(verbObject).concat("られませんでした"));
+            return (getStem(verbObject).concat("られました"));
           }
           else { //godan
-            return (verbObject.kana.substring(0,verbObject.kana.length - 1).concat(inflect(verbObject, "e").concat("ませんでした")));
+            return (verbObject.kana.substring(0,verbObject.kana.length - 1).concat(inflect(verbObject, "e").concat("ました")));
           }
         }
         else { //affirmative potential past casual
           if (verbObject.type == "ru") { //ichidan 
-            return (getStem(verbObject).concat("られなかった"));
+            return (getStem(verbObject).concat("られた"));
           }
           else { //godan
-            return (verbObject.kana.substring(0,verbObject.kana.length - 1).concat(inflect(verbObject, "e").concat("なかった")));
+            return (verbObject.kana.substring(0,verbObject.kana.length - 1).concat(inflect(verbObject, "e").concat("た")));
           }
         }
       }
@@ -1192,7 +1188,7 @@ function conjugateAdj(adjObject, conjugations) {
       }
     }
   }
-  if (!conjugations.adjAffirmative) {
+  if (conjugations.adjAffirmative == false) {
     if (conjugations.adjPresent) { //negative present
       if (adjObject.type == "i") {
         adj = adjObject.kana.substring(0,adjObject.kana.length - 1).concat("くない");
@@ -1325,7 +1321,7 @@ function conjugateExv(verbObject, conjugations) {
       }
     }
   }
-  else if (!conjugations.verbAffirmative) { //negative verbs
+  else if (conjugations.verbAffirmative == false) { //negative verbs
     if (conjugations.verbImperative) { //negative imperative
       return (verbObject.kana.concat("な"));
     }
@@ -1851,7 +1847,7 @@ function conjugateExa(adjObject, conjugations) {
     return (newString.substring(0, adjObject.kana.length - 1).concat("さ"));
   }
   if (conjugations.adjて) {
-    if (!conjugations.adjAffirmative) {
+    if (conjugations.adjAffirmative == false) {
       let newString = (adjObject.kana.substring(0, adjObject.kana.length - 2) + "よ" + adjObject.kana.slice(-1));
       return(newString.substring(0, adjObject.kana.length - 1).concat("くなくて"));
     }
@@ -1860,7 +1856,7 @@ function conjugateExa(adjObject, conjugations) {
       return(newString.substring(0,adjObject.kana.length - 1).concat("くて"));
     }
   }
-  if (!conjugations.adjAffirmative) {
+  if (conjugations.adjAffirmative == false) {
     if (conjugations.adjPresent) { //negative present
       let newString = (adjObject.kana.substring(0, adjObject.kana.length - 2) + "よ" + adjObject.kana.slice(-1));
       adj = newString.substring(0,adjObject.kana.length - 1).concat("くない");
@@ -2112,7 +2108,7 @@ function adjSpList(element) {
   else {
     let index;
 
-    if (element.id == "verbて" || element.id == "adverb" || element.id == "nominalized") {
+    if (element.id == "adjて" || element.id == "adverb" || element.id == "nominalized") {
       index = adjTenses.indexOf(element.id);
       if(index !== -1) adjTenses.splice(index, 1);
     }
@@ -2189,15 +2185,19 @@ verbFormal.addEventListener('click', () => {conjList(event.target)});
 adjい.addEventListener('click', () => {wordList(event.target)});
 adjな.addEventListener('click', () => {wordList(event.target)});
 adjException.addEventListener('click', () => {wordList(event.target)});
+
 adjPresent.addEventListener('click', () => {adjConjList(event.target)});
 adjPast.addEventListener('click', () => {adjConjList(event.target)});
 adjて.addEventListener('click', () => {adjSpList(event.target)});
 adverb.addEventListener('click', () => {adjSpList(event.target)});
+nominalized.addEventListener('click', () => {adjSpList(event.target)});
+
 adjAffirmative.addEventListener('click', () => {adjConjList(event.target)});
 adjNegative.addEventListener('click', () => {adjConjList(event.target)});
+
 adjCasual.addEventListener('click', () => {adjConjList(event.target)});
 adjFormal.addEventListener('click', () => {adjConjList(event.target)});
-nominalized.addEventListener('click', () => {adjSpList(event.target)});
+
 
 furigana.addEventListener('click', () => {manageFurigana(event.target)});
 
@@ -2214,3 +2214,4 @@ function manageFurigana(element) {
     });
   }
 }
+
