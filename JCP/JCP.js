@@ -32,7 +32,7 @@ question();
 textbox.addEventListener('input', function() {
   const romajiValue = textbox.value;
   const hiraganaValue = convertToHiragana(romajiValue);
-  textbox.value = hiraganaValue; // Replace the Romaji with the converted Hiragana
+  textbox.value = hiraganaValue; //replace romaji with hiragana
 });
 
 function question() {
@@ -43,8 +43,7 @@ function question() {
   let answer;
   
   //pick word
-  const randomWord = getRandomWord(words);
-  console.log(randomWord);
+  const randomWord = getRandomWord(words, wordPool);
 
   //generate conjugations
   if (randomWord.type == "ru" || randomWord.type == "u") {
@@ -208,15 +207,20 @@ function generateConjugation(specialConjForms, ConjForms, spConjPool, ConjPool) 
 
   // Reset some forms if て-form was chosen
   if (specialConjForms.verbて) {
-      ConjForms.verbFormal = null;
-      ConjForms.verbPresent = null;
-      specialConjForms.verbPotential = null;
-      specialConjForms.verbPassive = null;
-      specialConjForms.verbCausative = null;
-      specialConjForms.verbCausativePassive = null;
-      specialConjForms.verbImperative = null;
-      specialConjForms.verbVolitional = null;
+    if (ConjForms.verbAffirmative == true) {
+      ConjForms.verbAffirmative = null;
+    }
+    ConjForms.verbFormal = null;
+    ConjForms.verbPresent = null;
+    specialConjForms.verbPotential = null;
+    specialConjForms.verbPassive = null;
+    specialConjForms.verbCausative = null;
+    specialConjForms.verbCausativePassive = null;
+    specialConjForms.verbImperative = null;
+    specialConjForms.verbVolitional = null;
   }
+  //console.log(ConjForms)
+  //console.log(specialConjForms)
   return { ...ConjForms, ...specialConjForms };
 }
 
@@ -224,7 +228,6 @@ function generateConjugation(specialConjForms, ConjForms, spConjPool, ConjPool) 
 function generateAdjConj(adjSpConjForms, adjConjForms, adjSpConjPool, adjConjPool) {
   const validConjugations = Object.keys(adjConjForms).filter(conj => adjConjPool.includes(conj));
   const validSpecialConjugations = Object.keys(adjSpConjForms).filter(conj => adjSpConjPool.includes(conj));
-  let aff = null;
   if (validSpecialConjugations.includes("adjて") && adjTenses.length == 1 && adjTenses.includes("adjて")) {
     adjSpConjForms.adjて = true;
     if (validConjugations.includes("adjAffirmative") && validConjugations.includes("adjNegative")) {
@@ -232,7 +235,10 @@ function generateAdjConj(adjSpConjForms, adjConjForms, adjSpConjPool, adjConjPoo
         adjConjForms.adjAffirmative = false;
       }
     }
-    else if (adjSpConjForms.adjAffirmative == false) {
+    else if (validConjugations.includes("adjAffirmative")) {
+      adjConjForms.adjAffirmative = null;
+    }
+    else if (validConjugations.includes("adjNegative")) {
       adjConjForms.adjAffirmative = false;
     }
     return { ...adjSpConjForms, ...adjConjForms };
@@ -242,7 +248,12 @@ function generateAdjConj(adjSpConjForms, adjConjForms, adjSpConjPool, adjConjPoo
       adjSpConjForms.adjて = true;
     }
     else {
-      adjConjForms.adjPresent = RNG(2);
+      if (RNG(2)) {
+        adjConjForms.adjPresent = true;
+      }
+      else {
+        adjConjForms.adjPresent = false;
+      }
     }
   }
   else if (validConjugations.includes("adjPresent") && validSpecialConjugations.includes("adjて")) {
@@ -262,7 +273,12 @@ function generateAdjConj(adjSpConjForms, adjConjForms, adjSpConjPool, adjConjPoo
     }
   }
   else if (validConjugations.includes("adjPresent") && validConjugations.includes("adjPast")) {
-    adjConjForms.adjPresent = RNG(2);
+    if (RNG(2)) {
+      adjConjForms.adjPresent = true;
+    }
+    else {
+      adjConjForms.adjPresent = false;
+    }
   }
   else if (validConjugations.includes("adjPresent")) {
     adjConjForms.adjPresent = true;
@@ -270,23 +286,97 @@ function generateAdjConj(adjSpConjForms, adjConjForms, adjSpConjPool, adjConjPoo
   else if (validConjugations.includes("adjPast")) {
     adjConjForms.adjPresent = false;
   }
+  else if (validSpecialConjugations.includes("adjて")) {
+    if (validSpecialConjugations.includes("adverb") && validSpecialConjugations.includes("nominalized")) {
+       const rngFart = Math.floor(Math.random() * 3) + 1;
+       if (rngFart == 1) {
+        adjSpConjForms.adjて = true;
+        if (validConjugations.includes("adjAffirmative") && validConjugations.includes("adjNegative")) {
+          if (RNG(2)) {
+            adjConjForms.adjAffirmative = false;
+          }
+        }
+        else if (validConjugations.includes("adjAffirmative")) {
+          adjConjForms.adjAffirmative = null;
+        }
+        else if (validConjugations.includes("adjNegative")) {
+          adjConjForms.adjAffirmative = false;
+        }
+       }
+       else if (rngFart == 2) {
+        adjSpConjForms.adverb = true;
+       }
+       else {
+        adjSpConjForms.nominalized = true;
+       }
+    }
+    else if (validSpecialConjugations.includes("adverb")) {
+      if (RNG(2)) {
+        adjSpConjForms.adjて = true;
+        if (validConjugations.includes("adjAffirmative") && validConjugations.includes("adjNegative")) {
+          if (RNG(2)) {
+            adjConjForms.adjAffirmative = false;
+          }
+        }
+        else if (validConjugations.includes("adjAffirmative")) {
+          adjConjForms.adjAffirmative = null;
+        }
+        else if (validConjugations.includes("adjNegative")) {
+          adjConjForms.adjAffirmative = false;
+        }
+      }
+      else {
+        adjSpConjForms.adverb = true;
+      }
+    }
+    else if (validSpecialConjugations.includes("nominalized")) {
+      if (RNG(2)) {
+        adjSpConjForms.adjて = true;
+        if (validConjugations.includes("adjAffirmative") && validConjugations.includes("adjNegative")) {
+          if (RNG(2)) {
+            adjConjForms.adjAffirmative = false;
+          }
+        }
+        else if (validConjugations.includes("adjAffirmative")) {
+          adjConjForms.adjAffirmative = null;
+        }
+        else if (validConjugations.includes("adjNegative")) {
+          adjConjForms.adjAffirmative = false;
+        }
+      }
+      else {
+        adjSpConjForms.nominalized = true;
+      }
+    }
+    else {
+      adjSpConjForms.adjて = true;
+      if (validConjugations.includes("adjAffirmative") && validConjugations.includes("adjNegative")) {
+        if (RNG(2)) {
+          adjConjForms.adjAffirmative = false;
+        }
+      }
+      else if (validConjugations.includes("adjAffirmative")) {
+        adjConjForms.adjAffirmative = null;
+      }
+      else if (validConjugations.includes("adjNegative")) {
+        adjConjForms.adjAffirmative = false;
+      }
+    }
+    return { ...adjSpConjForms, ...adjConjForms };
+  }
   if (validConjugations.includes("adjAffirmative") && validConjugations.includes("adjNegative")) {
     if (RNG(2)) {
       adjConjForms.adjAffirmative = true;
-      aff = true;
     }
     else {
       adjConjForms.adjAffirmative = false;
-      aff = false
     }
   }
   else if (validConjugations.includes("adjAffirmative")) {
     adjConjForms.adjAffirmative = true;
-    aff = true;
   }
   else if (validConjugations.includes("adjNegative")) {
     adjConjForms.adjAffirmative = false;
-    aff = false;
   }
   if (validConjugations.includes("adjFormal") && validConjugations.includes("adjCasual")) {
     if (RNG(2)) {
@@ -317,17 +407,16 @@ function generateAdjConj(adjSpConjForms, adjConjForms, adjSpConjPool, adjConjPoo
     adjConjForms.adjAffirmative = null;
   }
   if (adjConjForms.adjて) {
-    if (aff == true) {
+    if (adjConjForms.adjAffirmative == true) {
       adjConjForms.adjAffirmative = null;
-    }
-    else if (aff == false) {
-      adjConjForms.adjAffirmative = false;
     }
     adjConjForms.adjFormal = null;
     adjConjForms.adjPresent = null;
     adjSpConjForms.adverb = null;
     adjSpConjForms.nominalized = null;
   }
+  //console.log(adjSpConjForms)
+  //console.log(adjConjForms)
   return { ...adjSpConjForms, ...adjConjForms };
 }
 
@@ -342,7 +431,7 @@ function generateAruConj() {
       }
     }
     else if (validConjugations.includes("verbAffirmative")) {
-      ConjForms.verbAffirmative = true;
+      ConjForms.verbAffirmative = null;
     }
     else if (validConjugations.includes("verbNegative")) {
       ConjForms.verbAffirmative = false;
@@ -354,7 +443,12 @@ function generateAruConj() {
       specialConjForms.verbて = true;
     }
     else {
-      ConjForms.verbPresent = RNG(2);
+      if (RNG(2)) {
+        ConjForms.verbPresent = true;
+      }
+      else {
+        ConjForms.verbPresent = false;
+      }
     }
   }
   else if (validConjugations.includes("verbPresent") && validSpecialConjugations.includes("verbて")) { //always present
@@ -374,7 +468,12 @@ function generateAruConj() {
     }
   }
   else if (validConjugations.includes("verbPresent") && validConjugations.includes("verbPast")) {
-    ConjForms.verbPresent = RNG(2);
+    if (RNG(2)) {
+        ConjForms.verbPresent = true;
+      }
+      else {
+        ConjForms.verbPresent = false;
+      }
   }
   else if (validConjugations.includes("verbPresent")) {
     ConjForms.verbPresent = true;
@@ -385,20 +484,16 @@ function generateAruConj() {
   if (validConjugations.includes("verbAffirmative") && validConjugations.includes("verbNegative")) { //decides aff or neg
     if (RNG(2)) {
       ConjForms.verbAffirmative = true;
-      aff = true;
     }
     else {
       ConjForms.verbAffirmative = false;
-      aff = false;
     }
   }
   else if (validConjugations.includes("verbAffirmative")) {
     ConjForms.verbAffirmative = true;
-    aff = true;
   }
   else if (validConjugations.includes("verbNegative")) {
     ConjForms.verbAffirmative = false;
-    aff = false;
   }
   if (validConjugations.includes("verbFormal") && validConjugations.includes("verbCasual")) { //decides formal or casual
     ConjForms.verbFormal = RNG(2);
@@ -410,20 +505,10 @@ function generateAruConj() {
     ConjForms.verbFormal = false;
   }
   if (specialConjForms.verbて) {
-    if (aff == true) {
+    if (ConjForms.verbAffirmative == true) {
       ConjForms.verbAffirmative = null;
     }
-    else if (aff == false) {
-      ConjForms.verbAffirmative = false;
-    }
     ConjForms.verbFormal = null;
-    ConjForms.verbPresent = null;
-    specialConjForms.verbPotential = null;
-    specialConjForms.verbPassive = null;
-    specialConjForms.verbCausative = null;
-    specialConjForms.verbCausativePassive = null;
-    specialConjForms.verbImperative = null;
-    specialConjForms.verbVolitional = null;
   }
   return { ...ConjForms, ...specialConjForms };
 }
@@ -718,15 +803,20 @@ function conjugate(verbObject, conjugations) {
     }
   }
   if (conjugations.verbImperative) { //imperative
-    if (verbObject.type == "ru") { //ichidan
-      return (getStem(verbObject).concat("ろ"));
+    if (conjugations.verbAffirmative == false) {
+      return (verbObject.kana.concat("な"));
     }
-    else { //godan
-      return (verbObject.kana.substring(0,verbObject.kana.length - 1).concat(inflect(verbObject, "e")));
+    else {
+      if (verbObject.type == "ru") { //ichidan
+        return (getStem(verbObject).concat("ろ"));
+      }
+      else { //godan
+        return (verbObject.kana.substring(0,verbObject.kana.length - 1).concat(inflect(verbObject, "e")));
+      }
     }
   }
   if (conjugations.verbて) { //teForm
-    if (conjugations.verbNegative) {
+    if (conjugations.verbAffirmative == false) {
       if (verbObject.type == "ru") { //ichidan
         return (getStem(verbObject).concat("なくて"));
       }
@@ -760,10 +850,7 @@ function conjugate(verbObject, conjugations) {
     }
   }
   else if (conjugations.verbAffirmative == false) { //negative verbs
-    if (conjugations.verbImperative) { //negative imperative
-      return (verbObject.kana.concat("な"));
-    }
-    else if (conjugations.verbCausativePassive) { 
+    if (conjugations.verbCausativePassive) { 
       if (conjugations.verbPresent) { 
         if (conjugations.verbFormal) { //negative causativePassive present formal
           if (verbObject.type == "ru") { //ichidan
@@ -1281,18 +1368,23 @@ function conjugateExv(verbObject, conjugations) {
     }
   }
   if (conjugations.verbImperative) { //imperative
-    if (verbObject.kana == "する") {
-      return "しろ"
+    if (conjugations.verbAffirmative == false) {
+      return verbObject.kana.concat("な");
     }
-    else if (verbObject.kana == "くる") {
-      return "こい"
-    }
-    else if (verbObject.kana == "いく") {
-      return "いけ"
+    else {
+      if (verbObject.kana == "する") {
+        return "しろ"
+      }
+      else if (verbObject.kana == "くる") {
+        return "こい"
+      }
+      else if (verbObject.kana == "いく") {
+        return "いけ"
+      }
     }
   }
   if (conjugations.verbて) { //teForm
-    if (conjugations.verbNegative) {
+    if (conjugations.verbAffirmative == false) {
       if (verbObject.kana == "する") {
         return "しなくて"
       }
@@ -1322,10 +1414,7 @@ function conjugateExv(verbObject, conjugations) {
     }
   }
   else if (conjugations.verbAffirmative == false) { //negative verbs
-    if (conjugations.verbImperative) { //negative imperative
-      return (verbObject.kana.concat("な"));
-    }
-    else if (conjugations.verbCausativePassive) { 
+    if (conjugations.verbCausativePassive) { 
       if (conjugations.verbPresent) { 
         if (conjugations.verbFormal) { //negative causativePassive present formal
           if (verbObject.kana == "する") {
@@ -1901,26 +1990,16 @@ function conjugateExa(adjObject, conjugations) {
   }
 }
 
-function getRandomWord() {
-  const randomList = getRandomList(words, wordPool);
-  const randomWord = randomList[getRandomNumber(0, randomList.length - 1)];
-  return randomWord;
-}
+function getRandomWord(words, wordPool) {
+  //convert the words object to an array of arrays
+  const allWords = Object.keys(words)
+      .filter(key => wordPool.includes(key))
+      .map(key => words[key]);
 
-function getRandomList(words, pool) {
-  // Get an array of all property names (categories) from the 'words' object
-  const categories = Object.keys(words);
+  const flatAllowedWords = [].concat(...allWords);
+  const randomIndex = Math.floor(Math.random() * flatAllowedWords.length);
 
-  // Filter categories based on pool
-  const available = categories.filter(category => pool.includes(category));
-
-  // Generate a random index within the range of the 'availableCategories' array length
-  const randomIndex = Math.floor(Math.random() * available.length);
-
-  // Access the list at the random index using bracket notation
-  const randomList = words[available[randomIndex]];
-
-  return randomList;
+  return flatAllowedWords[randomIndex];
 }
 
 function getRandomIndex(array) {
@@ -2053,7 +2132,8 @@ function adjConjList(element) {
     if (element.id == "adjPresent" || element.id == "adjPast") {
       adjTenses.push(element.id);
     }
-    ConjPool.push(element.id);
+    adjConjPool.push(element.id);
+    console.log(adjConjPool);
   }
   else {
     let index;
@@ -2073,6 +2153,7 @@ function adjConjList(element) {
 
     index = adjConjPool.indexOf(element.id);
     if(index !== -1) adjConjPool.splice(index, 1);
+    console.log(adjConjPool);
   }
   checkboxCheck(element);
 }
