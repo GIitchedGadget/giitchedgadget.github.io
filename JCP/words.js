@@ -60,6 +60,7 @@ export const words = {
         {"kanji":"辞<rt>や<\/rt>める","type":"ru","eng":"to give up on, to retire, to quit", "kana":"やめる"},
         {"kanji":"勧<rt>すす<\/rt>める","type":"ru","eng":"to recommend, to advise", "kana":"すすめる"},
         {"kanji":"責<rt>せ<\/rt>める","type":"ru","eng":"to condemn, to blame, to criticize", "kana":"せめる"},
+        {"kanji":"過<rt>す<\/rt>ぎる","type":"ru","eng":"to pass (of time)", "kana":"すぎる"},
     ],
     "verbす": [
         {"kanji":"話<rt>はな<\/rt>す","type":"u","eng":"to speak", "kana":"はなす"},
@@ -186,7 +187,6 @@ export const words = {
         {"kanji":"掛<rt>か<\/rt>かる","type":"u","eng":"to hang", "kana":"かかる"},
         {"kanji":"喋<rt>しゃべ<\/rt>る","type":"u","eng":"to talk, to chat", "kana":"しゃべる"},
         {"kanji":"走<rt>はし<\/rt>る","type":"u","eng":"to run", "kana":"はしる"},
-        {"kanji":"過<rt>す<\/rt>ぎる","type":"u","eng":"to pass (of time)", "kana":"すぎる"},
         {"kanji":"切<rt>き<\/rt>る","type":"u","eng":"to cut", "kana":"きる"},
         {"kanji":"太<rt>ふと<\/rt>る","type":"u","eng":"to get fat, to gain weight", "kana":"ふとる"},
         {"kanji":"終<rt>お<\/rt>わる","type":"u","eng":"to end", "kana":"おわる"},
@@ -216,7 +216,7 @@ export const words = {
         {"kanji":"<ruby>立<rt>た</rt></ruby>ち<ruby>直<rt>なお</rt></ruby>る","type":"u","eng":"to regain one's footing", "kana":"たちなおる"},
         {"kanji":"<ruby>立<rt>た</rt></ruby>ち<ruby>向<rt>む</rt></ruby>かう","type":"u","eng":"to stand up against, to oppose", "kana":"たちむかう"},
 
-        
+
     ],
     "verbException": [
         {"kanji":"為<rt>す<\/rt>る","type":"exv","eng":"to do", "kana":"する"},
