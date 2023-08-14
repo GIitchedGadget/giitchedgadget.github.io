@@ -1071,7 +1071,7 @@ function conjugate(verbObject, conjugations) {
             return (getStem(verbObject).concat("させられた"));
           }
           else { //godan
-            return (verbObject.kana.substring(0,verbObject.kana.length - 1).concat(inflect(verbObject, "a").concat("せられなた")));
+            return (verbObject.kana.substring(0,verbObject.kana.length - 1).concat(inflect(verbObject, "a").concat("せられた")));
           }
         }
       }
@@ -2295,4 +2295,3 @@ function manageFurigana(element) {
     });
   }
 }
-
