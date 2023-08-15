@@ -136,7 +136,7 @@ export const words = {
         {"kanji":"抜<rt>ぬ<\/rt>く","type":"u","eng":"to pull out, to extract, to omit, to leave out", "kana":"ぬく"},
         {"kanji":"除<rt>のぞ<\/rt>く","type":"u","eng":"to exclude, to remove, to eliminate", "kana":"のぞく"},
         {"kanji":"拭<rt>ふ<\/rt>く","type":"u","eng":"to wipe, to dry", "kana":"ふく"},
-        {"kanji":"浮<rt>う<\/rt>く","type":"u","eng":"to float", "kana":"うく"},
+        {"kanji":"浮<rt>う<\/rt>く","type":"u","eng":"to float, to not fit in", "kana":"うく"},
         {"kanji":"<ruby>立<rt>た</rt></ruby>ち<ruby>退<rt>の</rt></ruby>く","type":"u","eng":"to evacuate, to vacate", "kana":"たちのく"},
         {"kanji":"<ruby>追<rt>お</rt></ruby>い<ruby>付<rt>つ</rt></ruby>く","type":"u","eng":"to catch up (with), to pull even, to be compensated, to make up for one's losses", "kana":"おいつく"},
         {"kanji":"<ruby>落<rt>お</rt></ruby>ち<ruby>着<rt>つ</rt></ruby>く","type":"u","eng":"to calm down, to compose oneself, to relax", "kana":"おちつく"},
