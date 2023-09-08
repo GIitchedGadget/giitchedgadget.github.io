@@ -167,12 +167,30 @@ img {
     font-style: normal;
 }
 
-.amy {
+.container {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: calc(100% - 150px);
-    padding-top: 150px;
+    position: absolute;
+    padding: 10px;
+    background-color: blue;
+    top: 200px;
+    left: 10%;
+    width: 80vw;
+}
+
+.amy {
+  flex: 1;
+  padding: 10px;
+  height: calc(100% - 150px);
+  background-color: green;
+  height: 500px;
+  width: 30vw;
+}
+
+.aboutText {
+    flex: 1;
+    padding: 10px;
+    background-color: red;
+    height: 500px;
 }
 
 @keyframes fadeInFromTop {
@@ -195,4 +213,5 @@ img {
     filter: grayscale(95%);
     border-radius: 7px;
 }
+
 
