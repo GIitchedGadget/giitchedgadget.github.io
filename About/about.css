@@ -180,10 +180,27 @@ img {
 .amy {
   flex: 1;
   padding: 10px;
-  height: calc(100% - 150px);
+  height: 0;
   background-color: green;
   height: 500px;
   width: 30vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.amyImage {
+    position: absolute;
+    opacity: 0;
+    animation: fadeInFromTop 1s forwards;
+    min-width: 500px;
+    width: 100%;
+    height: 100%;
+    filter: grayscale(95%);
+    right: 0;
+    padding: 5px;
+    border-radius: 7px;
+    object-fit: contain;
+    
 }
 
 .aboutText {
@@ -204,14 +221,6 @@ img {
     }
 }
 
-.amyImage {
-    opacity: 0;
-    animation: fadeInFromTop 1s forwards;
-    min-width: 500px;
-    width: 30vw;
-    height: auto;
-    filter: grayscale(95%);
-    border-radius: 7px;
-}
+
 
 
