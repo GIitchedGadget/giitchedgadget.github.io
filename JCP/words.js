@@ -301,7 +301,7 @@ export const words = {
         {"kanji":"破<rt>やぶ<\/rt>る","type":"u","eng":"to tear up, to destroy", "kana":"やぶる"},
         {"kanji":"減<rt>へ<\/rt>る","type":"u","eng":"to decrease", "kana":"へる"},
         {"kanji":"計<rt>はか<\/rt>る","type":"u","eng":"to measure", "kana":"はかる"},
-        {"kanji":"裏<rt>うら<\/rt>切<rt>ぎ<\/rt>る","type":"u","eng":"to betray", "kana":"あらぎる"},
+        {"kanji":"裏<rt>うら<\/rt>切<rt>ぎ<\/rt>る","type":"u","eng":"to betray", "kana":"うらぎる"},
         {"kanji":"見<rt>み<\/rt>守<rt>まも<\/rt>る","type":"u","eng":"to look over, to watch over", "kana":"みまもる"},
         {"kanji":"刈<rt>か<\/rt>る","type":"u","eng":"to cut (e.g. grass, hair)", "kana":"かる"},
         {"kanji":"当<rt>あ<\/rt>たる","type":"u","eng":"to be hit", "kana":"あたる"},
