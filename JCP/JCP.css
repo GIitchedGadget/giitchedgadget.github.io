@@ -32,6 +32,11 @@ h1 {
     background-color: #555758;
 }
 
+.topBar {
+    height: 5.5vh;
+    max-height: 50px;
+}
+
 body {
     background-color: rgb(30, 31, 34);
 }
@@ -113,13 +118,20 @@ p.type {
   top: 105px;
   transform: translate(-50%);
   width: 1000px;
+  height: 200px;
+  overflow-wrap: break-word
 }
 
 p.targetInflections {
-    font-size: 25px;
+    font-size: 3vw;
     text-align: center;
     line-height: 0;
 }
+@media screen and (min-width: 1000px) {
+    p.targetInflections {
+       font-size: 25px;
+    }
+  }
 
 .answer {
   position: absolute;

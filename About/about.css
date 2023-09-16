@@ -84,7 +84,7 @@ img {
     border-bottom: 10px solid black;
 }
 #home-icon img {
-    width: 5vw;
+    width: vw;
     max-width: 60px;
     height: auto;
 }
@@ -192,9 +192,8 @@ img {
     position: absolute;
     opacity: 0;
     animation: fadeInFromTop 1s forwards;
-    max-width: 30vw;
-    min-width: 500px;
-    width: 100%;
+    width: 50%;
+    min-width: 350px;
     height: auto;
     filter: grayscale(95%);
     top: 20%;
@@ -210,14 +209,41 @@ img {
 
 .Text {
     position: absolute;
-    top: 25%;
+    top: 18%;
     font-weight: bold;
     color: #333;
     font-family: "RefrigeratorDeluxe", sans-serif;
     font-weight: 200;
     font-size: 25px;
-    line-height: 3vw;
+    line-height: 5vh;
     animation: fadeInFromLeft 2s forwards;
+}
+
+.hobbies {
+    position: absolute;
+    top: 85%;
+    left: 40%;
+    font-weight: bold;
+    color: #333;
+    font-family: "RefrigeratorDeluxe", sans-serif;
+    font-weight: 200;
+    font-size: 25px;
+    line-height: 5vh;
+    text-decoration: underline;
+    animation: fadeInFromTop 2s forwards;
+}
+
+.list {
+    position: absolute;
+    top: 92%;
+    left: 40%;
+    font-weight: bold;
+    color: #333;
+    font-family: "RefrigeratorDeluxe", sans-serif;
+    font-weight: 200;
+    font-size: 25px;
+    line-height: 3vh;
+    animation: fadeInFromTop 2s forwards;
 }
 
 @keyframes fadeInFromTop {
