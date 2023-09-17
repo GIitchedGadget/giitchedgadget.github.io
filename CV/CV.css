@@ -168,6 +168,11 @@ img {
     }
 }
 
+.container {
+    height: 1000px;
+    overflow: scroll;
+}
+
 p.header {
     text-align: center;
     font-family: "RefrigeratorDeluxe", sans-serif;
