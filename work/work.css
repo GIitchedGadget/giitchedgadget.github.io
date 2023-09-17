@@ -180,20 +180,29 @@ img {
     }
 }
 
-p.header {
-    text-align: center;
-    font-family: "RefrigeratorDeluxe", sans-serif;
-    font-weight: 200;
-    font-size: 25px;
-    text-decoration: underline;
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
 }
 
-p.text {
-    text-align: center;
-    font-family: "RefrigeratorDeluxe", sans-serif;
-    font-weight: 200;
-    font-size: 25px;
-    line-height: 2;
+/* Style each model embed container */
+.model-embed {
+    max-width: 100%;
+    margin: 1vh 100px; /* Adjust the margin to control spacing and move the top embed further down */
+}
+
+iframe {
+    border-radius: 10px;
+    width: 30vw;
+    min-width: 300px;
+    height: 30vh;
+    min-height: 300px;
+
+    
 }
 
 

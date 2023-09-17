@@ -178,10 +178,14 @@ img {
 .elmaImage {
     opacity: 0;
     animation: fadeInFromTop 1s forwards;
-    min-width: 500px;
+    min-width: 400px;
     width: 30vw;
     height: auto;
     filter: grayscale(95%);
     border-radius: 7px;
 }
-
+@media (max-width: 768px) {
+    .elmaImage {
+        width: 80vw;
+    }
+}
