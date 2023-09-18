@@ -3,7 +3,6 @@ body { /*no select */
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    overflow: hidden;
 }
 #preloader {
     position: fixed;
@@ -72,8 +71,19 @@ img {
     opacity: 1; 
 }
 
+.tooltip-arrow {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid black;
+}
 #home-icon img {
-    width: 5vw;
+    width: vw;
     max-width: 60px;
     height: auto;
 }
@@ -151,17 +161,143 @@ img {
 
 @font-face {
     font-family: "RefrigeratorDeluxe";
-    src: url("Fonts/Refrigerator Deluxe Light.otf") format("opentype");
+    src: url("../Fonts/Refrigerator Deluxe Light.otf") format("opentype");
     font-weight: normal;
     font-style: normal;
 }
 
-.elma {
+.container {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: calc(100% - 150px);
-    padding-top: 150px;
+    padding: 10px;
+    width: 80vw;
+    margin:auto;
+}
+@media (max-width: 768px) {
+    .space {
+        display: none;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Center vertically */
+        align-items: center; /* Center horizontally */
+        min-height: 50vh; /* Use at least the full viewport height */
+        text-align: center;
+    }
+    .container2 {
+        text-align: center;
+    }
+    .amyImage {
+        display: none;
+    }
+    .amy {
+        display: none;
+    }
+    .hobbies {
+        font-weight: bold;
+        color: #333;
+        font-family: "RefrigeratorDeluxe", sans-serif;
+        font-weight: 200;
+        font-size: 25px;
+        line-height: 2;
+        animation: fadeInFromTop 1.5s forwards;
+        text-align: center; 
+    }
+    .Text {
+        font-weight: bold;
+        color: #333;
+        font-family: "RefrigeratorDeluxe", sans-serif;
+        font-weight: 200;
+        font-size: 25px;
+        animation: fadeInFromLeft 2s forwards;
+        line-height: 1.5;
+    }
+    .list {
+        text-align: center;
+    }
+}
+
+.container2 {
+    width: 80vw;
+    height: 100px;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+}
+
+.amy {
+  flex: 1;
+  padding: 10px;    
+  height: 500px;
+  width: 50vw;
+  height: auto;
+  position: relative;
+  overflow: visible;
+  align-items: right;
+  align-content: right;
+  display: inline-block;
+  
+
+}
+
+.amyImage {
+    opacity: 0;
+    animation: fadeInFromTop 1s forwards;
+    width: 50%;
+    min-width: 350px;
+    max-width: 493px;
+    height: auto;
+    filter: grayscale(95%);
+    border-radius: 7px;
+    position: absolute;
+    right: 10px;
+}
+
+.aboutText {
+    flex: 1;
+    height: auto;
+    padding: 10px;
+    width: 100%;
+}
+
+.Text {
+    font-weight: bold;
+    color: #333;
+    font-family: "RefrigeratorDeluxe", sans-serif;
+    font-weight: 200;
+    font-size: 25px;
+    animation: fadeInFromLeft 2s forwards;
+    line-height: 2.6vw;
+}
+@media (max-width: 1780px) {
+    .Text {
+        line-height: 1.9;
+    }
+}
+@media (min-width: 2450px) {
+    .Text {
+        line-height: 2.6;
+    }
+}
+.hobbies {
+    font-weight: bold;
+    color: #333;
+    font-family: "RefrigeratorDeluxe", sans-serif;
+    font-weight: 200;
+    font-size: 25px;
+    line-height: 5vh;
+    text-decoration: underline;
+    animation: fadeInFromTop 2s forwards;
+}
+
+.list {
+    font-weight: bold;
+    color: #333;
+    font-family: "RefrigeratorDeluxe", sans-serif;
+    font-weight: 200;
+    font-size: 25px;
+    line-height: 2;
+    animation: fadeInFromTop 2s forwards;
 }
 
 @keyframes fadeInFromTop {
@@ -175,17 +311,18 @@ img {
     }
 }
 
-.elmaImage {
-    opacity: 0;
-    animation: fadeInFromTop 1s forwards;
-    min-width: 400px;
-    width: 30vw;
-    height: auto;
-    filter: grayscale(95%);
-    border-radius: 7px;
-}
-@media (max-width: 768px) {
-    .elmaImage {
-        width: 80vw;
+@keyframes fadeInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 1;
     }
 }
+
+
+
