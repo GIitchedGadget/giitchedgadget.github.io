@@ -168,41 +168,55 @@ img {
 
 .container {
     display: flex;
-    position: absolute;
     padding: 10px;
-    top: 200px;
-    left: 10%;
     width: 80vw;
-    height: 60vh;
+    height: 40vh;
+    background-color: green;
+    margin:auto;
 }
 @media (max-width: 768px) {
     .container {
         width: 80vw;
-        height: 60vh;
+        height: auto;
+        background-color: green;
+        align-items: center;
+        align-content: center;
+        text-align: center;
     }
+    
+}
+
+.container2 {
+    background-color: brown;
+    width: 80vw;
+    height: 100px;
+    align-items: center;
+    text-align: center;
+    margin: auto;
 }
 
 .amy {
   flex: 1;
-  padding: 10px;
+  padding: 10px;    
   height: 0;
   height: 500px;
   width: 50vw;
   height: auto;
   position: relative;
   overflow: visible;
+  background-color: yellow;
+  align-items: right;
+  align-content: right;
+
 }
 
 .amyImage {
-    position: absolute;
     opacity: 0;
     animation: fadeInFromTop 1s forwards;
     width: 50%;
     min-width: 350px;
     height: auto;
     filter: grayscale(95%);
-    top: 20%;
-    right: 10px;
     border-radius: 7px;
 }
 @media (max-width: 768px) {
@@ -220,6 +234,8 @@ img {
     flex: 1;
     height: auto;
     padding: 10px;
+    background-color: blue;
+    width: 100%;
 }
 
 .Text {
@@ -245,6 +261,7 @@ img {
         line-height: 5vh;
         animation: fadeInFromTop 1.5s forwards;
         text-align: center; 
+        background-color: red;
     }
 }
 @media (min-height: 1000px) {
@@ -252,7 +269,7 @@ img {
         line-height: 2;
     }
 }
-@media (min-width: 2000px) {
+@media (min-width: 1830px) {
     .Text {
         line-height: 2.7vw;
     }
@@ -265,9 +282,6 @@ img {
 }
 
 .hobbies {
-    position: absolute;
-    top: 85%;
-    left: 40%;
     font-weight: bold;
     color: #333;
     font-family: "RefrigeratorDeluxe", sans-serif;
@@ -280,7 +294,7 @@ img {
 @media (max-height: 850px) {
     .hobbies {
         position: absolute;
-        top: 450px;
+        top: 430px;
     }
 }
 @media (min-width: 1750px) {
@@ -291,25 +305,20 @@ img {
 }
 @media (max-width: 768px) {
     .hobbies {
-        position: absolute;
-        top: 60%;
-        left: 46%;
-        text-align: center;
-        animation: fadeInFromTop 2s forwards;
+        position: relative;
+        top:auto;
+        font-weight: bold;
+        color: #333;
+        font-family: "RefrigeratorDeluxe", sans-serif;
+        font-weight: 200;
+        font-size: 25px;
+        line-height: 5vh;
+        animation: fadeInFromTop 1.5s forwards;
+        text-align: center; 
+        background-color: cyan;
     }
 }
-@media (max-width: 768px) and (min-height: 1200px) {
-    .hobbies {
-        position: absolute;
-        top: 460px;
-    }
-}
-@media (max-width: 768px) and (max-height: 900px) {
-    .hobbies {
-        position: absolute;
-        top: 350px;
-    }
-}
+
 
 .list {
     position: absolute;
@@ -325,11 +334,8 @@ img {
 }
 @media (max-width: 768px) {
     .list {
-        position: absolute;
-        top: 70%;
-        left: 45%;
-        text-align: center;
-        animation: fadeInFromTop 2s forwards;
+    text-align: center;
+    
     }
 }
 @media (max-width: 768px) and (min-height: 1200px) {
