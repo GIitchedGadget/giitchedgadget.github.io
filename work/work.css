@@ -106,6 +106,17 @@ img {
     padding: 12px 8px;
 }
 
+#navbar p {
+    margin: 0 50px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+    font-family: "RefrigeratorDeluxe", sans-serif;
+    font-weight: 200;
+    font-size: 25px;
+    padding: 12px 8px;
+}
+
 #navbar a:hover {
     color: #8f8f8f;
 }

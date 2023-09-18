@@ -96,6 +96,17 @@ img {
     color: #8f8f8f;
 }
 
+#navbar p {
+    margin: 0 50px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+    font-family: "RefrigeratorDeluxe", sans-serif;
+    font-weight: 200;
+    font-size: 25px;
+    padding: 12px 8px;
+}
+
 .dropdown {
     position: relative;
     display: inline-block; 
@@ -235,7 +246,7 @@ img {
     min-width: 350px;
     max-width: 493px;
     height: auto;
-    filter: grayscale(95%);
+    filter: grayscale(60%);
     border-radius: 7px;
     position: absolute;
     right: 10px;
