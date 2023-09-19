@@ -16,6 +16,7 @@ h1 {
 #home-icon img {
     width: 5vw;
     max-width: 64px;
+    min-width: 56px;
     height: auto;
 }
 
@@ -82,13 +83,24 @@ p.stats {
 ruby.word {
     position: relative;
     top: 50px;
-    font-size: 5vw;
+    font-size: 96px;
     text-align: center;
     line-height: 0;
     color: black;
     font-family: 'Noto Serif JP', serif;
     width: 200px;
     white-space: nowrap;
+}
+@media (max-width: 768px) {
+    ruby.word {
+        font-size: 20vw;
+    }
+    p.definition {
+        width: 1000px;
+    }
+    .toConj {
+        font-size: 2vw;
+    }
 }
 
 p.definition {
