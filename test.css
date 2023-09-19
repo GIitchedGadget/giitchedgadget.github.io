@@ -1,0 +1,209 @@
+body { /*no select */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+#preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 1000;
+    transition: opacity 0.5s;
+}
+
+body.content-loaded #preloader {
+    opacity: 0;
+    pointer-events: none;
+}
+
+img {
+    pointer-events: none;
+}
+
+#home-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    pointer-events: auto;
+}
+
+.discord-container {
+    position: relative;
+}
+
+#discord {
+    position: absolute;
+    top: 1vw;
+    right: 1vw;
+    width:4vw;
+    max-width: 30px;
+    filter:invert();
+    transition: transform 0.3s ease;
+    z-index: 5;
+    pointer-events: auto;
+}
+
+#discord:hover {
+    transform: scale(1.08);
+    pointer-events: auto;
+}
+
+.tooltip {
+    display: block;
+    position: absolute;
+    top: 70px; 
+    right: 0; 
+    background-color: black;
+    color: whitesmoke;
+    padding: 10px 20px;
+    border-radius: 10px;
+    z-index: 5;
+    font-family: monospace;
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+}
+
+.tooltip.visible {
+    opacity: 1; 
+}
+#home-icon img {
+    max-width: 60px;
+    height: auto;
+}
+
+#navbar {
+    padding: 20px 0;
+    text-align: center;
+}
+
+#navbar a {
+    margin: 0 50px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+    font-family: "RefrigeratorDeluxe", sans-serif;
+    font-weight: 200;
+    font-size: 25px;
+    padding: 12px 8px;
+}
+
+#navbar a:hover {
+    color: #8f8f8f;
+}
+
+#navbar p {
+    margin: 0 50px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+    font-family: "RefrigeratorDeluxe", sans-serif;
+    font-weight: 200;
+    font-size: 25px;
+    padding: 12px 8px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block; 
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.droptext {
+    font-size: 5px;
+}
+
+.dropdown-content {
+    left: 0px;
+    display: none; 
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 0; 
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1; 
+    line-height: .7;
+    animation-name: slideDown;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+.dropdown-content a {
+    color: black;
+    margin:0;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; 
+}
+
+#mobile-icon {
+    display: none;
+}
+
+#sidebar {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    #navbar {
+        display: none;
+    }
+    #home-icon {
+        display: none;
+    }
+    #discord {
+        display: none;
+    }
+    #sidebar {
+
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: red;
+        height: 100vh;
+        width: 100px;
+    }
+    #mobile-icon {
+        display: block;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        pointer-events: auto;
+        max-width: 30px;
+        height: auto;
+        filter: invert(.5);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@font-face {
+    font-family: "RefrigeratorDeluxe";
+    src: url("../Fonts/Refrigerator Deluxe Light.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+

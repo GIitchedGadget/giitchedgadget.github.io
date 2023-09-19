@@ -5,7 +5,7 @@
              私。
          </title>
 
-        <link rel = "stylesheet" href = "home.css">
+        <link rel = "stylesheet" href = "test.css">
         <link rel="icon" href="Images/yu.png" type="image/png">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,24 +50,25 @@
                     <a class="droptext" href="https://enka.network/u/620288461/">Enka</a>
                 </div>
             </div>
-            <a href="test.html">???</a>
+            <a href="">???</a>
         </div>
-        <div class="space">
-            <br><br><br><br><br><br><br><br>
+        <img src="Images/mobilebutton.png" id="mobile-icon" onclick="toggleBar()" alt="Clickable Image">
+        <div id="sidebar">
+
         </div>
-        <div class="container">
-            <div class="amy">
-                <img src="../Images/amy.jpg" class="amyImage" draggable="false"/>
-            </div>
-            <div class="aboutText">
-                <p class="Text">hi <br>im gadget <br>they + (he) <br>06 <br>infp <br>en/cn/jp <br>3d modeler + artist</p>
-            </div>
-            
-        </div>
-        <div class="container2">
-            <p class="hobbies">hobbies</p>
-            <p class="list">music <br>guitar <br>日本語 <br>modeling<br><br></p>
-        </div>
-        <script type="module" src = "home.js"></script>
+
+        <script>
+            function toggleBar() {
+            const sidebar = document.getElementById('sidebar')
+            if (sidebar.style.display == 'none') {
+                sidebar.style.display = 'block';
+            }
+            else {
+                sidebar.style.display = 'none';
+            }
+        }
+        </script>
+
+        <script type="module" src = "test.js"></script>
     </body>
 </html>
