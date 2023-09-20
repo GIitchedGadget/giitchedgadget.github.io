@@ -154,7 +154,16 @@ img {
 }
 
 #sidebar {
-        display: none;
+    display: none;
+}
+#work {
+    display: none;
+}
+#japanese {
+    display: none;
+}
+#elsewhere {
+    display: none;
 }
 
 #mobileLinks {
@@ -182,8 +191,47 @@ img {
         width: 100vw;
         text-align: center;
     }
+    #work {
+        opacity: 0;
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        text-align: center;
+        background-color: red;
+        z-index: 50;
+    }
+    #japanese {
+        opacity: 0;
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        text-align: center;
+        background-color: red;
+        z-index: 50;
+    }
+    #elsewhere {
+        opacity: 0;
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        text-align: center;
+        background-color: red;
+        z-index: 50;
+    }
     .animation {
         animation: slideUp .6s forwards;
+    }
+    .animation2 {
+        animation: slideLeftMobile .6s forwards;
     }
     #mobile-icon {
         display: block;
@@ -228,6 +276,16 @@ img {
     from {
         opacity: 0;
         transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes slideLeftMobile {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
     }
     to {
         opacity: 1;
