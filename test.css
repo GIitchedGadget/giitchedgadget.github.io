@@ -4,6 +4,9 @@ body { /*no select */
     -moz-user-select: none;
     -ms-user-select: none;
 }
+.noscroll {
+    overflow: hidden;
+}
 #preloader {
     position: fixed;
     left: 0;
@@ -151,6 +154,10 @@ img {
 }
 
 #sidebar {
+        display: none;
+}
+
+#mobileLinks {
     display: none;
 }
 
@@ -159,19 +166,24 @@ img {
         display: none;
     }
     #home-icon {
-        display: none;
+        left: 45%;
+        width: 32px;
     }
     #discord {
         display: none;
     }
     #sidebar {
-
+        opacity: 0;
+        display: block;
         position: absolute;
-        left: 0;
         top: 0;
-        background-color: red;
+        left: 0;
         height: 100vh;
-        width: 100px;
+        width: 100vw;
+        text-align: center;
+    }
+    .animation {
+        animation: slideUp .6s forwards;
     }
     #mobile-icon {
         display: block;
@@ -182,6 +194,23 @@ img {
         max-width: 30px;
         height: auto;
         filter: invert(.5);
+        z-index: 999;
+    }
+
+    #mobileLinks {
+        display: block;
+        position:relative;
+        top: -15%;
+        margin: 0 50px;
+        text-decoration: none;
+        font-weight: bold;
+        color: #333;
+        font-family: "RefrigeratorDeluxe", sans-serif;
+        font-weight: 100;
+        font-size: 50px;
+        padding: 12px 8px;
+        line-height: 100px;
+        cursor: default;
     }
 }
 
@@ -195,6 +224,27 @@ img {
         transform: translateY(0);
     }
 }
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 @font-face {
     font-family: "RefrigeratorDeluxe";
@@ -202,8 +252,3 @@ img {
     font-weight: normal;
     font-style: normal;
 }
-
-
-
-
-

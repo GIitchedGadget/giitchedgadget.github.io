@@ -20,7 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Unable to copy text: ', err);
         });
     });
+
+    
 });
+
+
+
+
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
 });
