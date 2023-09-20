@@ -1,74 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>
-             私。
-         </title>
+<head>
+    <title>私。</title>
+    <link rel="stylesheet" href="test.css">
+    <link rel="icon" href="Images/yu.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body id="body">
+    <div id="preloader"></div>
 
-        <link rel = "stylesheet" href = "test.css">
-        <link rel="icon" href="Images/yu.png" type="image/png">
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div id="preloader"></div>
-        
-        <a id="home-icon" href="/">
-            <img src="Images/yu.png" alt="Home" draggable="false">
-        </a>
-        <div class="discord-container">
-            <img src="Images/discord.png" id="discord" alt="Click to copy text" draggable="false"/>
-            <span id="textToCopy" style="display: none;">glitchedgadget</span>
-            <div id="tooltip" class="tooltip">
+    <a id="home-icon" href="/">
+        <img src="Images/yu.png" alt="Home" draggable="false">
+    </a>
+    <div class="discord-container">
+        <img src="Images/discord.png" id="discord" alt="Click to copy text" draggable="false"/>
+        <span id="textToCopy" style="display: none;">glitchedgadget</span>
+        <div id="tooltip" class="tooltip">
             Copied!
+        </div>
+    </div>
+    <div id="navbar">
+        <a href="/">Home</a>
+        <div class="dropdown">
+            <p>Work</p>
+            <div class="dropdown-content">
+                <a class="droptext" href="work/2023.html">2023</a>
+                <a class="droptext" href="">2022</a>
+                <a class="droptext" href="">2021</a>
+                <a class="droptext" href="">2020</a>
+                <a class="droptext" href="CV.html">CV</a>
             </div>
         </div>
-        <div id="navbar">
-            <a href="/">Home</a>
-            <div class="dropdown">
-                <p>Work</p>
-                <div class="dropdown-content">
-                    <a class="droptext" href="work/2023.html">2023</a>
-                    <a class="droptext" href="">2022</a>
-                    <a class="droptext" href="">2021</a>
-                    <a class="droptext" href="">2020</a>
-                    <a class="droptext" href="CV.html">CV</a>
-                </div>
+        <div class="dropdown">
+            <p>Japanese</p>
+            <div class="dropdown-content">
+                <a class="droptext" href="JCP.html">Conjugation</a>
+                <a class="droptext" href="JVP.html">Vocabulary</a>
             </div>
-            <div class="dropdown">
-                <p>Japanese</p>
-                <div class="dropdown-content">
-                    <a class="droptext" href="JCP.html">Conjugation</a>
-                    <a class="droptext" href="JVP.html">Vocabulary</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <p>Elsewhere</p>
-                <div class="dropdown-content">
-                    <a class="droptext" href="https://open.spotify.com/user/0f8iwn8344o15iyex20no2u7y?si=4a56f7a4cd194efc">Spotify</a>
-                    <a class="droptext" href="https://www.roblox.com/users/126989919/profile">Roblox</a>
-                    <a class="droptext" href="https://enka.network/u/620288461/">Enka</a>
-                </div>
-            </div>
-            <a href="">???</a>
         </div>
-        <img src="Images/mobilebutton.png" id="mobile-icon" onclick="toggleBar()" alt="Clickable Image">
-        <div id="sidebar">
+        <div class="dropdown">
+            <p>Elsewhere</p>
+            <div class="dropdown-content">
+                <a class="droptext" href="https://open.spotify.com/user/0f8iwn8344o15iyex20no2u7y?si=4a56f7a4cd194efc">Spotify</a>
+                <a class="droptext" href="https://www.roblox.com/users/126989919/profile">Roblox</a>
+                <a class="droptext" href="https://enka.network/u/620288461/">Enka</a>
+            </div>
+        </div>
+        <a href="">???</a>
+    </div>
+    <img src="Images/mobilebutton.png" id="mobile-icon" onclick="toggleBar()">
+    <div id="sidebar">
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <a id="mobileLinks" href="/">Home</a> <br>
+        <a id="mobileLinks" onclick="">Work</a> <br>
+        <a id="mobileLinks" onclick="">Japanese</a> <br>
+        <a id="mobileLinks" onclick="">Elsewhere</a>
+    </div>
 
-        </div>
-
-        <script>
-            function toggleBar() {
-            const sidebar = document.getElementById('sidebar')
-            if (sidebar.style.display == 'none') {
-                sidebar.style.display = 'block';
-            }
-            else {
-                sidebar.style.display = 'none';
+    <script>
+        function toggleBar() {
+            const sidebar = document.getElementById("sidebar");
+            const body = document.getElementById("body");
+            if (window.getComputedStyle(sidebar).display == "none") {
+                sidebar.style.display = "block";
+                sidebar.classList.add("animation");
+                body.classList.add("noscroll");
+                sidebar.classList.remove("animation2");
+            } else if (window.getComputedStyle(sidebar).display == "block") {
+                body.classList.remove("noscroll");
+                sidebar.classList.remove("animation");
+                sidebar.style.display = "none";
             }
         }
-        </script>
+    </script>
 
-        <script type="module" src = "test.js"></script>
-    </body>
+    <script type="module" src="test.js"></script>
+</body>
 </html>
