@@ -147,6 +147,148 @@ img {
     display: block; 
 }
 
+#mobile-icon {
+    display: none;
+    position: absolute;
+}
+
+#sidebar {
+    display: none;
+    position: absolute;
+}
+#work {
+    display: none;
+    position: absolute;
+}
+#japanese {
+    display: none;
+    position: absolute;
+}
+#elsewhere {
+    display: none;
+    position: absolute;
+}
+
+#mobileLinks {
+    position: absolute;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    #navbar {
+        display: none;
+    }
+    #home-icon {
+        left: 45%;
+        width: 32px;
+        z-index: 500;
+    }
+    #discord {
+        display: none;
+    }
+    #sidebar {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        text-align: center;
+        align-items: center;
+        z-index: 20;
+        background-color: white;
+    }
+    #work {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        text-align: center;
+        z-index: 30;
+        background-color: white;
+    }
+    #japanese {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        text-align: center;
+        z-index: 30;
+        background-color: white;
+    }
+    #elsewhere {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        text-align: center;
+        z-index: 30;
+        background-color: white;
+    }
+    .animation {
+        animation: slideUp .6s forwards;
+    }
+    .animation2 {
+        animation: slideLeftMobile .4s forwards;
+    }
+    #mobile-icon {
+        display: block;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        pointer-events: auto;
+        max-width: 30px;
+        height: auto;
+        filter: invert(.5);
+        z-index: 500;
+    }
+
+    #mobileLinks {
+        display: block;
+        position: relative;
+        top: -15%;
+        margin: 0 50px;
+        text-decoration: none;
+        font-weight: bold;
+        color: #333;
+        font-family: "RefrigeratorDeluxe", sans-serif;
+        font-weight: 100;
+        font-size: 50px;
+        padding: 12px 8px;
+        line-height: 100px;
+        cursor: default;
+    }
+}
+
+@keyframes slideLeftMobile {
+    0% {
+        opacity: 0;
+        transform: translateX(200px);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @keyframes slideDown {
     from {
         opacity: 0;

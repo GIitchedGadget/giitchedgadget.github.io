@@ -10,7 +10,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body>
+    <body id="body">
         <div id="preloader"></div>
         
         <a id="home-icon" href="/">
@@ -52,6 +52,38 @@
             </div>
             <a href="">???</a>
         </div>
+
+        <img src="../Images/mobilebutton.png" id="mobile-icon" onclick="toggleBar()">
+            <div id="sidebar">
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <a id="mobileLinks" href="/">Home</a> <br>
+                <a id="mobileLinks" onclick="toggleScreen(document.getElementById('work'))">Work</a> <br>
+                <a id="mobileLinks" onclick="toggleScreen(document.getElementById('japanese'))">Japanese</a> <br>
+                <a id="mobileLinks" onclick="toggleScreen(document.getElementById('elsewhere'))">Elsewhere</a>
+            </div>
+            <div id="work" class="toggleable-section">
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <a id="mobileLinks" onclick="cancel(document.getElementById('work'))">Back</a> <br>
+                <a id="mobileLinks" href="">2023</a>
+                <a id="mobileLinks" href="">2022</a>
+                <a id="mobileLinks" href="">2021</a>
+                <a id="mobileLinks" href="">2020</a>
+                <a id="mobileLinks" href="../CV.html">CV</a>
+            </div>
+            <div id="japanese" class="toggleable-section">
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <a id="mobileLinks" onclick="cancel(document.getElementById('japanese'))">Back</a> <br>
+                <a id="mobileLinks" href="../JCP.html">Conjugation Practice</a> <br>
+                <a id="mobileLinks" href="../JVP.html">Vocabulary Practice</a> <br>
+            </div>
+            <div id="elsewhere" class="toggleable-section">
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <a id="mobileLinks" onclick="cancel(document.getElementById('elsewhere'))">Back</a> <br>
+                <a id="mobileLinks" href="https://open.spotify.com/user/0f8iwn8344o15iyex20no2u7y?si=4a56f7a4cd194efc">Spotify</a> <br>
+                <a id="mobileLinks" href="https://www.roblox.com/users/126989919/profile">Roblox</a> <br>
+                <a id="mobileLinks" href="https://enka.network/u/620288461/">Enka</a>
+            </div>
+
         <br><br><br><br><br>
         <div class="container">
             <div class="model-embed">
@@ -64,6 +96,45 @@
                 <div class="sketchfab-embed-wrapper"> <iframe title="Reaper Roblox UGC" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/1e148fe2a8044a669fec136fde9540ec/embed?ui_theme=dark"> </iframe> </div>
             </div>
         </div>
+        <script>
+            function toggleBar() {
+                const sidebar = document.getElementById("sidebar");
+                const body = document.getElementById("body");
+                const work = document.getElementById("work");
+                const japanese = document.getElementById("japanese");
+                const elsewhere = document.getElementById("elsewhere");
+                if (window.getComputedStyle(sidebar).display === "none") {
+                    sidebar.style.display = "block";
+                    sidebar.classList.add("animation");
+                    body.classList.add("noscroll");
+                } else if (window.getComputedStyle(sidebar).display === "block") {
+                    body.classList.remove("noscroll");
+                    sidebar.classList.remove("animation");
+                    sidebar.style.display = "none";
+                }
+                if (work.style.display == "block") {
+                    work.style.display = "none";
+                }
+                if (japanese.style.display == "block") {
+                    japanese.style.display = "none";
+                }
+                if (elsewhere.style.display == "block") {
+                    elsewhere.style.display = "none";
+                }
+            }
+            function toggleScreen(section) {
+                if (window.getComputedStyle(section).display === "none") {
+                    section.style.display = "block";
+                    section.classList.add("animation2");
+                } else if (window.getComputedStyle(section).display === "block") {
+                    section.classList.remove("animation2");
+                    section.style.display = "none";
+                }
+            }
+            function cancel(section) {
+                section.style.display = "none";
+            }
+        </script>
         <script type="module" src = "work.js"></script>
     </body>
 </html>
