@@ -207,9 +207,12 @@ img {
         display: none;
     }
     #home-icon {
-        left: 45%;
+        display: flex;
+        justify-content: center;
+        left: 50%;
         width: 32px;
         z-index: 500;
+        transform: translateX(-50%);
     }
     #discord {
         display: none;
@@ -287,10 +290,14 @@ img {
         color: #333;
         font-family: "RefrigeratorDeluxe", sans-serif;
         font-weight: 100;
-        font-size: 50px;
+        font-size: 10vw;
         padding: 12px 8px;
-        line-height: 100px;
+        line-height: 10vh;
         cursor: default;
+    }
+
+    .weblink {
+        text-decoration: underline !important;
     }
 }
 
