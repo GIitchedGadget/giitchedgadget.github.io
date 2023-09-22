@@ -59,7 +59,7 @@ function question() {
         textbox.disabled = true;
         answerBox.style.display = '';
         bottom.style.display = '';
-        document.getElementById("definition").innerHTML = randomWord.eng;
+        document.getElementById("definition").innerHTML = truncateText(randomWord.eng, 50);
 
         answerBox.style.backgroundColor = '#62e776';
         document.getElementById("result").innerHTML = "Correct";
@@ -73,7 +73,7 @@ function question() {
         textbox.disabled = true;
         answerBox.style.display = '';
         bottom.style.display = '';
-        document.getElementById("definition").innerHTML = randomWord.eng;
+        document.getElementById("definition").innerHTML = truncateText(randomWord.eng, 50);
 
         answerBox.style.backgroundColor = '#de5842';
         if (userInputValue == "") {
@@ -146,6 +146,13 @@ function adjustFontSize(element) {
 
 function splitAnswers(str) {
   return str.split(', ').map(item => item.trim());
+}
+
+function truncateText(text, maxLength) {
+  if (text.length > maxLength) {
+    return text.slice(0, maxLength) + '...';
+  }
+  return text;
 }
 
 // convert romaji to hiragana

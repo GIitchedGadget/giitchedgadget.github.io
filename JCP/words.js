@@ -60,6 +60,7 @@ export const words = {
         {"kanji":"勧<rt>すす<\/rt>める","type":"ru","eng":"to recommend", "kana":"すすめる"},
         {"kanji":"責<rt>せ<\/rt>める","type":"ru","eng":"to condemn", "kana":"せめる"},
         {"kanji":"過<rt>す<\/rt>ぎる","type":"ru","eng":"to pass (of time)", "kana":"すぎる"},
+        {"kanji":"迷<rt>めい<\/rt>惑<rt>わく<\/rt>をかける","type":"ru","eng":"to bother, to inconvenience", "kana":"めいわくをかける"}
     ],
     "verbす": [
         {"kanji":"話<rt>はな<\/rt>す","type":"u","eng":"to speak", "kana":"はなす"},

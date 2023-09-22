@@ -1,5 +1,6 @@
 
 h1 {
+    position: relative;
     text-align: center;
     color: black;
     font-family: 'Roboto', sans-serif;
@@ -24,10 +25,10 @@ h1 {
     position: absolute;
     top: 10px;
     right: 10px;
-    width: 12vw;
-    height: 5vh;
+    height: 56px;
+    width: 15vw;
     max-width: 100px;
-    max-height: 50px;
+    max-height: 56px;
     text-align: center;
     font-size: 15px;
     padding: 0px;
@@ -64,7 +65,7 @@ p {
     width: calc(70vw);
     text-align: center;
     border-radius: 20px;
-    height: 490px;
+    height: 510px;
     /* center div horizontally */
     margin: 0 auto;
 }
@@ -91,16 +92,16 @@ ruby.word {
     width: 200px;
     white-space: nowrap;
 }
-@media (max-width: 768px) {
-    ruby.word {
-        font-size: 20vw;
-    }
-    p.definition {
-        width: 1000px;
-    }
-    .toConj {
-        font-size: 2vw;
-    }
+
+#answerBox {
+    position: absolute;
+    left: 50%;
+    top: 270px;
+    transform: translate(-50%);
+    background-color:#62e776;
+    height: 90px;
+    width: 40vw;
+    border-radius: 20px;
 }
 
 p.definition {
@@ -118,7 +119,7 @@ p.definition {
   top: 270px;
   transform: translate(-50%);
   background-color:#62e776;
-  width: calc(40vw);
+  width: 40vw;
   height: 90px;
   border-radius: 20px;
 }
@@ -177,7 +178,7 @@ p.bottom {
 
 .options {
     position: absolute;
-    top: 440px;
+    top: 460px;
     right: 10px;
     width: 100px;
     height: 40px;
@@ -272,4 +273,35 @@ label.headerLabel {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     margin-bottom: 10px;
+}
+@media (max-width: 450px) {
+    #title {
+        top: 10px;
+        font-size: 22px;
+        white-space: nowrap;
+        line-height: 2;
+    }
+    ruby.word {
+        font-size: 17vw;
+    }
+    p.definition {
+        width: 300px;
+    }
+    .toConj {
+        font-size: 3vw;
+        height: 56px;
+        width: 64px;
+    }
+    #answerBox {
+        width: 60vw;
+    }
+    label {
+        display: block;
+        padding-left: 15px;
+        text-indent: -15px;
+        color: black;
+        font-family: 'Roboto', sans-serif;
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
 }

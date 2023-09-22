@@ -2,6 +2,7 @@ h1 {
     text-align: center;
     color:whitesmoke;
     font-family: 'Roboto', sans-serif;
+    position: relative;
 }
 
 #home-icon {
@@ -11,7 +12,7 @@ h1 {
 }
 
 #home-icon img {
-    width: 64px;
+    width: 56px;
     height: auto;
     filter:invert()
 }
@@ -27,6 +28,7 @@ h1 {
     border-radius: 20px;
     border: 0px;
     background-color: #3b3c3d;
+    color: white;
 }
 .toVocab:hover {
     background-color: #555758;
@@ -39,6 +41,8 @@ h1 {
 
 body {
     background-color: rgb(30, 31, 34);
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 p {
@@ -52,7 +56,7 @@ p {
     width: calc(70vw);
     text-align: center;
     border-radius: 20px;
-    height: 490px;
+    height: 510px;
     /* center div horizontally */
     margin: 0 auto;
 }
@@ -95,6 +99,7 @@ ruby.word {
     line-height: 0;
     color:whitesmoke;
     font-family: 'Roboto', sans-serif;
+    white-space: nowrap;
 }
 
 p.definition {
@@ -204,6 +209,7 @@ p.bottom {
     border-radius: 20px;
     border: 0px;
     background-color: #555759;
+    color: white;
 }
 .options:hover {
     background-color: #6b6c6e;
@@ -212,11 +218,12 @@ p.bottom {
 .optionsGUI {
     position: absolute;
     background-color: rgb(43, 45, 48);
-    top: 20px;
     width: calc(70vw);
+    min-height: 730px;
+    min-width: 1000px;
     text-align: center;
     border-radius: 20px;
-    height: 760px;
+    height: 800px;
     z-index: 50;
 }
 
@@ -303,4 +310,34 @@ label.headerLabel {
   flex-direction: column;
   align-items: flex-start;
   padding-left: 50px;
+}
+
+@media (max-width: 450px) {
+    #title {
+        top: 10px;
+        font-size: 20px;
+        white-space: nowrap;
+        line-height: 2;
+    }
+    ruby.word {
+        font-size: 40px;
+    }
+    p.definition {
+        width: 60vw;
+        line-height: 1;
+    }
+    label {
+        font-size: 12px;
+      }
+
+    .answer {
+        width: calc(60vw);
+    }
+    p.type {
+        top: 23px;
+    }
+    .targetInflections {
+        top: 110px;
+    }
+      
 }

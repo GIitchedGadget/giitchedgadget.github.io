@@ -8,7 +8,7 @@
         <link rel = "stylesheet" href = "JCP/JCP.css">
         <link rel="icon" href="../Images/yu.png" type="image/png">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
     </head>
     <body>
 
@@ -179,11 +179,16 @@
             const optionsGUI = document.getElementById('optionsGUI');
             const main = document.getElementById('main');
             function toggleOverlay() {
-                if (optionsGUI.style.display == '') {
-                    optionsGUI.style.display = 'none';
+                if (optionsGUI.style.display == "") {
+                    optionsGUI.style.display = "none";
+                    document.body.style.overflowX = "hidden";
+                    document.body.style.overflowY = "hidden";
+                    window.scrollTo(0, 0);
                 }
                 else {
                     optionsGUI.style.display = '';
+                    document.body.style.overflowX = "auto";
+                    document.body.style.overflowY = "auto";
                 }
             }
             function navigateToVocab() {
