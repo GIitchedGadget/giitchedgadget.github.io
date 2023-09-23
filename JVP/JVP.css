@@ -26,8 +26,7 @@ h1 {
     top: 10px;
     right: 10px;
     height: 56px;
-    width: 15vw;
-    max-width: 100px;
+    width: 100px;
     max-height: 56px;
     text-align: center;
     font-size: 15px;
@@ -290,7 +289,6 @@ label.headerLabel {
     .toConj {
         font-size: 3vw;
         height: 56px;
-        width: 64px;
     }
     #answerBox {
         width: 60vw;
