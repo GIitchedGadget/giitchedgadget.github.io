@@ -2,11 +2,11 @@
 <html lang="en">
     <head>
         <title>
-             CV
+            実績。
          </title>
 
-        <link rel = "stylesheet" href = "CV/CV.css">
-        <link rel="icon" href="Images/yu.png" type="image/png">
+        <link rel = "stylesheet" href = "work.css">
+        <link rel="icon" href="../Images/yu.png" type="image/png">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
     </head>
@@ -14,10 +14,10 @@
         <div id="preloader"></div>
         
         <a id="home-icon" href="/">
-            <img src="Images/yu.png" alt="Home" draggable="false">
+            <img src="../Images/yu.png" alt="Home" draggable="false">
         </a>
         <div class="discord-container">
-            <img src="Images/discord.png" id="discord" alt="Click to copy text" draggable="false"/>
+            <img src="../Images/discord.png" id="discord" alt="Click to copy text" draggable="false"/>
             <span id="textToCopy" style="display: none;">glitchedgadget</span>
             <div id="tooltip" class="tooltip">
             Copied!
@@ -28,18 +28,18 @@
             <div class="dropdown">
                 <p>Work</p>
                 <div class="dropdown-content">
-                    <a class="droptext" href="work/2023.html">2023</a>
-                    <a class="droptext" href="work/2022.html">2022</a>
-                    <a class="droptext" href="work/2021.html">2021</a>
-                    <a class="droptext" href="work/2020.html">2020</a>
-                    <a class="droptext" href="CV.html">CV</a>
+                    <a class="droptext" href="2023.html">2023</a>
+                    <a class="droptext" href="2022.html">2022</a>
+                    <a class="droptext" href="2021.html">2021</a>
+                    <a class="droptext" href="2020.html">2020</a>
+                    <a class="droptext" href="../CV.html">CV</a>
                 </div>
             </div>
             <div class="dropdown">
                 <p>Japanese</p>
                 <div class="dropdown-content">
-                    <a class="droptext" href="JCP.html">Conjugation</a>
-                    <a class="droptext" href="JVP.html">Vocabulary</a>
+                    <a class="droptext" href="../JCP.html">Conjugation</a>
+                    <a class="droptext" href="../JVP.html">Vocabulary</a>
                 </div>
             </div>
             <div class="dropdown">
@@ -52,7 +52,8 @@
             </div>
             <a href="">???</a>
         </div>
-        <img src="Images/mobilebutton.png" id="mobile-icon" onclick="toggleBar()">
+
+        <img src="../Images/mobilebutton.png" id="mobile-icon" onclick="toggleBar()">
         <div id="sidebar">
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <a id="mobileLinks" href="/">Home</a> <br>
@@ -63,10 +64,10 @@
         <div id="work" class="toggleable-section">
             <br><br><br><br><br><br><br><br><br><br><br>
             <a id="mobileLinks" class="weblink" onclick="cancel(document.getElementById('work'))">Back</a> <br>
-            <a id="mobileLinks" href="work/2023.html">2023</a>
-            <a id="mobileLinks" href="work/2022.html">2022</a>
-            <a id="mobileLinks" href="work/2021.html">2021</a>
-            <a id="mobileLinks" href="work/2020.html">2020</a>
+            <a id="mobileLinks" href="2023.html">2023</a>
+            <a id="mobileLinks" href="2022.html">2022</a>
+            <a id="mobileLinks" href="2021.html">2021</a>
+            <a id="mobileLinks" href="2020.html">2020</a>
             <a id="mobileLinks" href="CV.html">CV</a>
         </div>
         <div id="japanese" class="toggleable-section">
@@ -83,29 +84,19 @@
             <a id="mobileLinks" href="https://enka.network/u/620288461/">Enka</a>
         </div>
 
-        <br><br><br>
+        <br><br><br><br><br>
         <div class="container">
-            <p class="header">Experience</p>
-            <p class="text">
-                Roblox Studio | 2019-present <br>
-                Blender | 2019-present <br>
-                Adobe Substance Painter | 2022-present
-            </p>
-            <br>
-            <p class="header">Work</p>
-            <p class="text">
-                Freelance | 2021-present <br>
-                Spacelink | UGC Creator | 2023-present <br>
-                Left 4 Death | Modeler | 2023-present <br>
-                Tower Defense X | Contractor | 2022-2023 <br>
-                Strike Down | Modeler | 2022-2023 <br>
-                Frontline Interactive | Contractor | 2021-2022 <br>
-                Tiny Towers | Contractor | 2021-2022 <br>
-                Reconnaissance Games | Modeler | 2021-2022 <br>
-                Frontline Defense | Modeler | 2021-2022 <br>
-                Paradoxum Games | Contributor | 2020-2021 <br>
-                Tower Defense Simulator | Contributor | 2020-2021
-             </p>
+            <img src="../Images/Work/2021/turret.png" class="showcase" draggable="false">
+            <br><br><br><br><br>
+            <img src="../Images/Work/2021/cadet.png" class="showcase" draggable="false">
+            <br><br><br><br><br>
+            <img src="../Images/Work/2021/solar.png" class="showcase" draggable="false">
+            <br><br><br><br><br>
+            <img src="../Images/Work/2021/sun.png" class="showcase" draggable="false">
+            <br><br><br><br><br>
+            <img src="../Images/Work/2021/hiddenwave.png" class="showcase" draggable="false">
+            <br><br><br><br><br>
+            <img src="../Images/Work/2021/zombies.png" class="showcase" draggable="false">
         </div>
         <script>
             function toggleBar() {
@@ -146,6 +137,6 @@
                 section.style.display = "none";
             }
         </script>
-        <script type="module" src = "CV/CV.js"></script>
+        <script type="module" src = "work.js"></script>
     </body>
 </html>
