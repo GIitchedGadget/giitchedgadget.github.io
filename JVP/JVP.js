@@ -12,6 +12,8 @@ import {prefectures} from "./Words/prefectures.js";
 import {romajiToHiraganaMap} from "../characterList.js";
 
 let wordPool = [n5];
+let doneWords = [];
+let wrongWords = [];
 
 const answerBox = document.getElementById('answerBox');
 const bottom = document.getElementById('bottom');
@@ -65,6 +67,11 @@ function question() {
         document.getElementById("result").innerHTML = "Correct";
         document.getElementById("correctAnswer").innerHTML = userInputValue + " ○";
 
+        if (!wrongWords.includes(randomWord)) {
+          doneWords.push(randomWord); //add word to list of words that wont come up again
+        }
+        
+
         document.addEventListener('keyup', reset);
         userInputValue = null;
       }
@@ -84,6 +91,89 @@ function question() {
         }
         document.getElementById("correctAnswer").innerHTML = answer + " ○";
 
+        wrongWords.push(randomWord); //add word to list of words incorrect
+        randomWord["stage"] = "5";
+        console.log(randomWord);
+
+        document.addEventListener('keyup', reset);
+        userInputValue = null;
+      }
+      document.removeEventListener('keyup', answerCheck);
+    }
+  } 
+  document.addEventListener('keyup', answerCheck); //calls function
+}
+
+function review() {
+  textbox.disabled = false;
+  textbox.focus();
+
+  let answer;
+  
+  //pick word
+  const randomWord = getRandomWord2(wrongWords);
+  console.log(randomWord);
+
+  document.getElementById("word").innerHTML = randomWord.kanji;
+  document.getElementById("definition").innerHTML = "Type the reading!";
+
+  const definition = document.querySelector("#definition");
+  adjustFontSize(definition);
+
+  if (randomWord.kana.includes(",")) {
+    answer = splitAnswers(kataToHira(randomWord.kana));
+  }
+  else {
+    answer = kataToHira(randomWord.kana);
+  }
+  function answerCheck(event) { //defines function
+    if (event.key === 'Enter') { //checks if right key was pressed
+      let userInputValue = textbox.value; 
+      if (userInputValue == answer || (Array.isArray(answer) && answer.includes(userInputValue))) { //correct answer
+        textbox.value = "";
+        textbox.disabled = true;
+        answerBox.style.display = '';
+        bottom.style.display = '';
+        document.getElementById("definition").innerHTML = truncateText(randomWord.eng, 50);
+
+        answerBox.style.backgroundColor = '#62e776';
+        document.getElementById("result").innerHTML = "Correct";
+        document.getElementById("correctAnswer").innerHTML = userInputValue + " ○";
+
+        if (randomWord.stage == 1) {
+          remove(randomWord.kanji, wrongWords);
+        }
+        else {
+          randomWord.stage--;
+        }
+        
+        document.addEventListener('keyup', reset);
+        userInputValue = null;
+      }
+      else { //wrong answer
+        textbox.value = "";
+        textbox.disabled = true;
+        answerBox.style.display = '';
+        bottom.style.display = '';
+        document.getElementById("definition").innerHTML = truncateText(randomWord.eng, 50);
+
+        answerBox.style.backgroundColor = '#de5842';
+        if (userInputValue == "") {
+          document.getElementById("result").innerHTML = userInputValue + "No answer ×";
+        }
+        else {
+          document.getElementById("result").innerHTML = userInputValue + " ×";
+        }
+        document.getElementById("correctAnswer").innerHTML = answer + " ○";
+
+        wrongWords.push(randomWord); //add word to list of words incorrect
+        randomWord["stage"] = "5";
+        console.log(randomWord);
+
+        if (randomWord.stage != 5) {
+          randomWord.stage++;
+        }
+
         document.addEventListener('keyup', reset);
         userInputValue = null;
       }
@@ -94,21 +184,67 @@ function question() {
 }
 
 function reset(event) {
-    textbox.value = '';
-    answerBox.style.display = 'none';
-    bottom.style.display = 'none';
+  textbox.value = '';
+  answerBox.style.display = 'none';
+  bottom.style.display = 'none';
+
+  if (wrongWords.length >= 10) {
+    if (RNG(3)) {
+      review();
+    }
+    else {
+      question();
+    }
+  }
+  else if (wrongWords.length >= 5) {
+    if (RNG(4)) {
+      review();
+    }
+    else {
+      question();
+    }
+  }
+  else if (wrongWords.length >= 1) {
+    if (RNG(5)) {
+      review();
+    }
+    else {
+      question();
+    }
+  }
+  else {
     question();
+  }
+
   document.removeEventListener('keyup', reset);
 }
 
 function getRandomWord(wordPool) {
-  // Step 1: Randomly select an array from the array of arrays
-  const randomArray = wordPool[Math.floor(Math.random() * wordPool.length)];
+  let fullWordPool = wordPool.flat();
+  fullWordPool = fullWordPool.filter((item) => !doneWords.includes(item));
 
-  // Step 2: Randomly select an object from the chosen array
-  const randomObject = randomArray[Math.floor(Math.random() * randomArray.length)];
+  const randomObject = fullWordPool[Math.floor(Math.random() * fullWordPool.length)];
+  
+  return randomObject;
+}
+
+function getRandomWord2(wrongWords) {
+  let highestValue = Number.MIN_SAFE_INTEGER;
+  for (let i = 0; i < wrongWords.length; i++) {
+    if (wrongWords[i].stage > highestValue) {
+      highestValue = wrongWords[i].stage;
+    }
+  }
+  const filtered = wrongWords.filter(item => item.stage === highestValue);
+
+  const randomObject = filtered[Math.floor(Math.random() * filtered.length)];
 
   return randomObject;
+}
+
+function remove(word, array) {
+  const index = array.findIndex(obj => obj.kanji === word);
+    array.splice(index, 1);
 }
 
 const DEFAULT_FONT_SIZE = '25px';
@@ -153,6 +289,11 @@ function truncateText(text, maxLength) {
     return text.slice(0, maxLength) + '...';
   }
   return text;
+}
+
+function RNG(num) {
+  const randomNumber = Math.floor(Math.random() * num) + 1;
+  return num === randomNumber;
 }
 
 // convert romaji to hiragana
@@ -218,7 +359,7 @@ checkboxes.forEach(checkbox => {
           wordPool.push(variableValue);
       } else {
           const index = wordPool.indexOf(variableValue);
-          if (index !== -1) wordPool.splice(index, 1);
+          wordPool.splice(index, 1);
       }
       checkboxCheck();
   });
