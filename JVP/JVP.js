@@ -14,6 +14,17 @@ import {romajiToHiraganaMap} from "../characterList.js";
 let wordPool = [n5];
 let doneWords = [];
 let wrongWords = [];
+let maxLength;
+
+if (window.screen.width >= 2000) {
+  maxLength = 200;
+}
+else if (window.screen.width >= 1000) {
+  maxLength = 100;
+}
+else {
+  maxLength = 50;
+}
 
 const answerBox = document.getElementById('answerBox');
 const bottom = document.getElementById('bottom');
@@ -61,7 +72,7 @@ function question() {
         textbox.disabled = true;
         answerBox.style.display = '';
         bottom.style.display = '';
-        document.getElementById("definition").innerHTML = truncateText(randomWord.eng, 50);
+        document.getElementById("definition").innerHTML = truncateText(randomWord.eng, maxLength);
 
         answerBox.style.backgroundColor = '#62e776';
         document.getElementById("result").innerHTML = "Correct";
@@ -80,7 +91,7 @@ function question() {
         textbox.disabled = true;
         answerBox.style.display = '';
         bottom.style.display = '';
-        document.getElementById("definition").innerHTML = truncateText(randomWord.eng, 50);
+        document.getElementById("definition").innerHTML = truncateText(randomWord.eng, maxLength);
 
         answerBox.style.backgroundColor = '#de5842';
         if (userInputValue == "") {
@@ -93,7 +104,6 @@ function question() {
 
         wrongWords.push(randomWord); //add word to list of words incorrect
         randomWord["stage"] = "5";
-        console.log(randomWord);
 
         document.addEventListener('keyup', reset);
         userInputValue = null;
@@ -112,7 +122,6 @@ function review() {
   
   //pick word
   const randomWord = getRandomWord2(wrongWords);
-  console.log(randomWord);
 
   document.getElementById("word").innerHTML = randomWord.kanji;
   document.getElementById("definition").innerHTML = "Type the reading!";
@@ -134,7 +143,7 @@ function review() {
         textbox.disabled = true;
         answerBox.style.display = '';
         bottom.style.display = '';
-        document.getElementById("definition").innerHTML = truncateText(randomWord.eng, 50);
+        document.getElementById("definition").innerHTML = truncateText(randomWord.eng, maxLength);
 
         answerBox.style.backgroundColor = '#62e776';
         document.getElementById("result").innerHTML = "Correct";
@@ -155,7 +164,7 @@ function review() {
         textbox.disabled = true;
         answerBox.style.display = '';
         bottom.style.display = '';
-        document.getElementById("definition").innerHTML = truncateText(randomWord.eng, 50);
+        document.getElementById("definition").innerHTML = truncateText(randomWord.eng, maxLength);
 
         answerBox.style.backgroundColor = '#de5842';
         if (userInputValue == "") {
@@ -168,7 +177,6 @@ function review() {
 
         wrongWords.push(randomWord); //add word to list of words incorrect
         randomWord["stage"] = "5";
-        console.log(randomWord);
 
         if (randomWord.stage != 5) {
           randomWord.stage++;
@@ -231,7 +239,7 @@ function getRandomWord(wordPool) {
 function getRandomWord2(wrongWords) {
   let highestValue = Number.MIN_SAFE_INTEGER;
   for (let i = 0; i < wrongWords.length; i++) {
-    if (wrongWords[i].stage > highestValue) {
+    if (wrongWords[i].stage > highestValue) { 
       highestValue = wrongWords[i].stage;
     }
   }
@@ -293,7 +301,7 @@ function truncateText(text, maxLength) {
 
 function RNG(num) {
   const randomNumber = Math.floor(Math.random() * num) + 1;
-  return num === randomNumber;
+  return num == randomNumber;
 }
 
 // convert romaji to hiragana
