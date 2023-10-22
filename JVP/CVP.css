@@ -75,20 +75,22 @@ p.stats {
 
 .wordBox {
   position: absolute;
+  width: 80%;
+  height: 400px;
   left: 50%;
   top: 30px;
   transform: translate(-50%);
 }
 
-ruby.word {
+#CNword {
     position: relative;
-    top: 50px;
+    top: -40px;
+    left: 0;
     font-size: 96px;
     text-align: center;
     line-height: 0;
     color: black;
-    font-family: 'Noto Serif JP', serif;
-    width: 200px;
+    font-family: 'Noto Serif SC', serif;
     white-space: nowrap;
 }
 
@@ -103,17 +105,10 @@ ruby.word {
     border-radius: 20px;
 }
 
-p.definition {
+#definition {
     position: relative;
-    top: 60px;
-    font-size: 25px;
-    text-align: center;
-    line-height: 1;
-}
-
-p.definition2 {
-    position: relative;
-    top: -30px;
+    top: -60px;
+    left:0;
     font-size: 25px;
     text-align: center;
     line-height: 1;
@@ -232,14 +227,6 @@ p.topText {
     height:250px;
 }
 
-.rightOptions {
-    flex: 1;
-    display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 10px;
-  padding-left: 50px;
-}
 
 hr {
     border: none;

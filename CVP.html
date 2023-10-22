@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <title>
+           Chinese Vocabulary Practice
+        </title>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400&display=swap" rel="stylesheet">
+        
+
+        <link rel = "stylesheet" href = "JVP/CVP.css">
+        <link rel="icon" href="../Images/yu.png" type="image/png">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    </head>
+    <body>
+        <div class="topBar">
+            <a id="home-icon" href="/">
+                <img src="../Images/yu.png" alt="Home">
+            </a>
+    
+        </div>
+        <h1 id="title">Chinese Vocabulary Practice</h1>
+
+        <div id="main" class="main">
+            <div class="wordBox">
+                <p id="CNword"></p>
+                <p id="definition"></p>
+                <p id="type" class="type"></p>
+            </div>
+            
+            <div id="answerBox" class="answer">
+                <p id="result" class="result"></p>
+                <p id="correctAnswer" class="correct"></p>
+            </div>
+
+            <div class="textbox">
+                <input type="text" id ="textbox" class="textbox">
+                <p id="bottom" class="bottom">Press any key to continue</p>
+            </div>
+
+            <button id="optionsButton" class="options" onmouseup="toggleOverlay()">⚙️Options</button>
+            <div id="optionsGUI" class="optionsGUI">
+                <div class="optionsMain">
+                    <div class="leftOptions">
+                        <div class="mainVerbBox">
+                            <p class="placeholder"></p>
+                        </div>
+                        <div class="verbTypeBox">
+                            <label class="checkBoxLabel">
+                                <input id="hsk6" class="words" type="checkbox">HSK 6</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="hsk5" class="words" type="checkbox">HSK 5</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="hsk4" class="words" type="checkbox">HSK 4</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="hsk3" class="words" type="checkbox">HSK 3</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="hsk2" class="words" type="checkbox">HSK 2</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="hsk1" class="words" type="checkbox">HSK 1</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            
+        </div>
+        <script type="module" src = "JVP/CVP.js"></script>
+        <script>
+            const optionsGUI = document.getElementById('optionsGUI');
+            const optionsButton = document.getElementById('optionsButton');
+            const textbox = document.getElementById("textbox");
+            optionsGUI.style.display = 'none';
+            function toggleOverlay() {
+                if (optionsGUI.style.display == '') { //hide
+                    optionsGUI.style.display = 'none';
+                    optionsButton.style.top = '460px';
+                    optionsButton.innerHTML = "⚙️Options";
+                    textbox.disabled = false;
+                    
+                }
+                else { //show
+                    optionsGUI.style.display = '';
+                    optionsButton.style.top = '760px';
+                    optionsButton.innerHTML = "Back ↩"
+                    textbox.disabled = true;
+                }
+            }
+        </script>
+    </body>
+</html>
