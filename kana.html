@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <title>
+           Kana Practice 
+        </title>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400&display=swap" rel="stylesheet">
+        
+
+        <link rel = "stylesheet" href = "JVP/kana.css">
+        <link rel="icon" href="../Images/yu.png" type="image/png">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    </head>
+    <body>
+        <div class="topBar">
+            <a id="home-icon" href="/">
+                <img src="../Images/yu.png" alt="Home">
+            </a>
+    
+        </div>
+        <h1 id="title">Japanese Kana Practice</h1>
+        <div id="main" class="main">
+            <div class="wordBox">
+                <ruby id="word" class="word"></ruby>
+                <p id="definition" class="definition"></p>
+                <p id="type" class="type"></p>
+            </div>
+            
+            <div id="answerBox" class="answer">
+                <p id="result" class="result"></p>
+                <p id="correctAnswer" class="correct"></p>
+            </div>
+
+            <div class="textbox">
+                <input type="text" id ="textbox" class="textbox">
+                <p id="bottom" class="bottom">Press any key to continue</p>
+            </div>
+
+            <button id="optionsButton" class="options" onmouseup="toggleOverlay()">⚙️Options</button>
+            <div id="optionsGUI" class="optionsGUI">
+                <div class="optionsMain">
+                    <div class="leftOptions">
+                        <div class="another">
+                            <label class="checkBoxLabel">
+                                <input id="あ" type="checkbox">a-i-u-e-o group</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="か" type="checkbox">ka-ki-ku-ke-ko group</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="さ" type="checkbox">sa-shi-su-se-so group</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="た"type="checkbox">ta-chi-tsu-te-to group</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="な"type="checkbox">na-ni-nu-ne-no group</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="は"type="checkbox">ha-hi-fu-he-ho group</label>
+                                <br>
+                        </div>
+                    </div>
+                    <div class="middleOptions">
+                        <div class="another">
+                            <label class="checkBoxLabel">
+                                <input id="ま"type="checkbox">ma-mi-mu-me-mo group</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="ら"type="checkbox">ra-ri-ru-re-ro group</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="や"type="checkbox">ya-yu-yo group</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="ん"type="checkbox">the other ones</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="ゐ"type="checkbox">archaic kana</label>
+                                <br>
+                        </div>
+                    </div>
+                    <div class="rightOptions">
+                        <div class="another">
+                            <label class="checkBoxLabel">
+                                <input id="dakuten" class="words" type="checkbox">Dakuten (")</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="handakuten" class="words" type="checkbox">Handakuten (°)</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="hiragana" class="words" type="checkbox">Hiragana</label>
+                                <br>
+                            <label class="checkBoxLabel">
+                                <input id="katakana" class="words" type="checkbox">Katakana</label>
+                                <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            
+        </div>
+        <script type="module" src = "JVP/kana.js"></script>
+        <script>
+            const optionsGUI = document.getElementById('optionsGUI');
+            const optionsButton = document.getElementById('optionsButton');
+            const textbox = document.getElementById("textbox");
+            optionsGUI.style.display = 'none';
+            function toggleOverlay() {
+                if (optionsGUI.style.display == '') { //hide
+                    optionsGUI.style.display = 'none';
+                    optionsButton.style.top = '460px';
+                    optionsButton.innerHTML = "⚙️Options";
+                    textbox.disabled = false;
+                    
+                }
+                else { //show
+                    optionsGUI.style.display = '';
+                    optionsButton.style.top = '760px';
+                    optionsButton.innerHTML = "Back ↩"
+                    textbox.disabled = true;
+                }
+            }
+        </script>
+    </body>
+</html>

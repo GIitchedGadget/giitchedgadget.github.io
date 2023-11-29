@@ -1,0 +1,308 @@
+
+h1 {
+    position: relative;
+    text-align: center;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    
+}
+
+#home-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+#home-icon img {
+    width: 5vw;
+    max-width: 64px;
+    min-width: 56px;
+    height: auto;
+}
+
+.topBar {
+    height: 5.5vh;
+    max-height: 50px;
+}
+
+p.title {
+    font-size: 500px;
+}
+
+body {
+    background-color: #f7f7f0;
+}
+
+p {
+    color: black;
+    font-family: 'Roboto', sans-serif;
+}
+
+.main {
+    position: relative;
+    background-color: #deded8;
+    width: calc(70vw);
+    text-align: center;
+    border-radius: 20px;
+    height: 510px;
+    /* center div horizontally */
+    margin: 0 auto;
+}
+
+p.stats {
+    line-height: 0px;
+}
+
+.wordBox {
+  position: absolute;
+  left: 50%;
+  top: 30px;
+  transform: translate(-50%);
+}
+
+ruby.word {
+    position: relative;
+    top: 50px;
+    font-size: 96px;
+    text-align: center;
+    line-height: 0;
+    color: black;
+    font-family: 'Noto Serif JP', serif;
+    width: 200px;
+    white-space: nowrap;
+}
+
+#answerBox {
+    position: absolute;
+    left: 50%;
+    top: 270px;
+    transform: translate(-50%);
+    background-color:#62e776;
+    height: 90px;
+    width: 40vw;
+    border-radius: 20px;
+}
+
+p.definition {
+    position: relative;
+    top: 60px;
+    font-size: 25px;
+    text-align: center;
+    line-height: 1;
+}
+
+p.definition2 {
+    position: relative;
+    top: -30px;
+    font-size: 25px;
+    text-align: center;
+    line-height: 1;
+}
+
+.answer {
+  position: absolute;
+  left: 50%;
+  top: 270px;
+  transform: translate(-50%);
+  background-color:#62e776;
+  width: 40vw;
+  height: 90px;
+  border-radius: 20px;
+}
+
+p.result {
+    position: absolute;
+  left: 50%;
+  top: 0px;
+  transform: translate(-50%);
+    width: 3000px;
+    font-size: 25px;
+    text-align: center;
+    line-height: 0;
+}
+
+p.correct {
+    position: absolute;
+    left: 50%;
+    top: 28px;
+    transform: translate(-50%);
+    width: 1000px;
+    font-size: 25px;
+    text-align: center;
+    line-height: 1;
+}
+
+.textbox {
+  position: absolute;
+  left: 50%;
+  top: 195px;
+  transform: translate(-50%);
+}
+
+input[type="text"] {
+    font-size: 16px;
+    padding: 8px;
+    border: 1px solid #1f1f1f;
+    border-radius: 100px;
+    width: calc(45vw);
+    background-color: whitesmoke;
+    color: black;
+}
+
+input[type="text"]:disabled {
+    background-color: rgb(211, 211, 211);
+}
+
+p.bottom {
+  position: absolute;
+  font-size: 15px;
+  left: 50%;
+  top: 225px;
+  transform: translate(-50%);
+  width: 200px;
+}
+
+.options {
+    position: absolute;
+    top: 460px;
+    right: 10px;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 20px;
+    border: 0px;
+    background-color: #c6c6c0;
+    color:black;
+    text-shadow: 0px 0 black;
+    z-index: 9999;
+}
+.options:hover {
+    background-color: #adada8;
+}
+
+.options:disabled {
+    background-color: #9e9e9a;
+    color: #818178;
+}
+
+.optionsGUI {
+    position: absolute;
+    background-color: #deded8;
+    top: 459px;
+    width: calc(70vw);
+    text-align: center;
+    border-radius: 20px;
+    height: 350px;
+    z-index: 50;
+}
+
+.optionsMain {
+    display: flex;
+}
+
+p.topText {
+    font-size: 30px;
+    line-height: 0;
+}
+
+.another {
+    position: relative;
+    left: 20%;
+    align-items: center;
+    width: 80%;
+}
+
+
+.leftOptions {
+    flex: 1;
+    height:250px;
+    align-items: center;
+    text-align: left;
+}
+
+.middleOptions {
+    flex: 1;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.rightOptions {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+hr {
+    border: none;
+    clear: both;
+    display: block;
+    width: 96%;
+    background-color: #6b6c6e;
+    height: 1px;
+    margin: 10px auto;
+    border-width: 0; /* Add this line to ensure consistent thickness */
+    border-bottom-width: 1px; /* Set the thickness of the bottom border */
+    margin-top: -5px;
+}
+
+input[type="checkbox"] {
+    transform: scale(1.5);
+    line-height: 3;
+    margin-right: 10px;
+    order: 1;
+}
+
+label {
+  display: block;
+  padding-left: 15px;
+  text-indent: -15px;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+label.headerLabel {
+    display: block;
+    padding-left: 15px;
+    text-indent: -15px;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+@media (max-width: 450px) {
+    #title {
+        top: 10px;
+        font-size: 22px;
+        white-space: nowrap;
+        line-height: 2;
+    }
+    ruby.word {
+        font-size: 17vw;
+    }
+    p.definition {
+        width: 300px;
+    }
+    .toConj {
+        font-size: 3vw;
+        height: 56px;
+    }
+    #answerBox {
+        width: 60vw;
+    }
+    label {
+        display: block;
+        padding-left: 15px;
+        text-indent: -15px;
+        color: black;
+        font-family: 'Roboto', sans-serif;
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+}

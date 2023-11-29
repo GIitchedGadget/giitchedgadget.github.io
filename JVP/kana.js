@@ -1,17 +1,18 @@
-import {animals} from "./Words/animals.js";
-import {common} from "./Words/common.js";
-import {countries} from "./Words/countries.js";
-import {n1} from "./Words/n1.js";
-import {n2} from "./Words/n2.js";
-import {n3} from "./Words/n3.js";
-import {n4} from "./Words/n4.js";
-import {n5} from "./Words/n5.js";
-import {plants} from "./Words/plants.js";
-import {vegetables} from "./Words/vegetables.js";
-import {prefectures} from "./Words/prefectures.js";
-import {romajiToHiraganaMap} from "../characterList.js";
+import {あ} from "./Kana/kanaList.js";
+import {か} from "./Kana/kanaList.js";
+import {さ} from "./Kana/kanaList.js";
+import {た} from "./Kana/kanaList.js";
+import {な} from "./Kana/kanaList.js";
+import {は} from "./Kana/kanaList.js";
+import {ま} from "./Kana/kanaList.js";
+import {ら} from "./Kana/kanaList.js";
+import {や} from "./Kana/kanaList.js";
+import {ん} from "./Kana/kanaList.js";
+import {ゐ} from "./Kana/kanaList.js";
 
-let wordPool = [n5];
+
+
+let wordPool = [あ, か, さ, た, な, は, ま, ら, や, ん, ゐ];
 let wrongWords = [];
 let doneWords = [];
 let maxLength;
@@ -37,11 +38,6 @@ optionsGUI.style.display = 'none';
 document.addEventListener("DOMContentLoaded", () => {
 question();
 });
-textbox.addEventListener('input', function() {
-  const romajiValue = textbox.value;
-  const hiraganaValue = convertToHiragana(romajiValue);
-  textbox.value = hiraganaValue; // Replace the Romaji with the converted Hiragana
-});
 
 function question() {
   textbox.disabled = false;
@@ -52,17 +48,32 @@ function question() {
   //pick word
   const randomWord = getRandomWord(wordPool);
 
-  document.getElementById("word").innerHTML = randomWord.kanji;
+  if (document.getElementById("hiragana").checked && document.getElementById("katakana").checked) {
+    if (RNG(3)) {
+      document.getElementById("word").innerHTML = randomWord.katakana;
+    }
+    else {
+      document.getElementById("word").innerHTML = randomWord.hiragana;
+    }
+  }
+  else if (document.getElementById("hiragana").checked) {
+    document.getElementById("word").innerHTML = randomWord.hiragana;
+  }
+  else if (document.getElementById("katakana").checked) {
+    document.getElementById("word").innerHTML = randomWord.katakana;
+  }
+
+  
   document.getElementById("definition").innerHTML = "Type the reading!";
 
   const definition = document.querySelector("#definition");
   adjustFontSize(definition);
 
-  if (randomWord.kana.includes(",")) {
-    answer = splitAnswers(kataToHira(randomWord.kana));
+  if (randomWord.eng.includes(",")) {
+    answer = splitAnswers(randomWord.eng);
   }
   else {
-    answer = kataToHira(randomWord.kana);
+    answer = randomWord.eng;
   }
   function answerCheck(event) { //defines function
     if (event.key === 'Enter') { //checks if right key was pressed
@@ -72,7 +83,7 @@ function question() {
         textbox.disabled = true;
         answerBox.style.display = '';
         bottom.style.display = '';
-        document.getElementById("definition").innerHTML = truncateText(randomWord.eng, maxLength);
+        document.getElementById("definition").innerHTML = "";
         answerBox.style.backgroundColor = '#62e776';
         document.getElementById("result").innerHTML = "Correct";
         document.getElementById("correctAnswer").innerHTML = userInputValue + " ○";
@@ -308,59 +319,34 @@ function RNG(num) {
   return num == randomNumber;
 }
 
-// convert romaji to hiragana
-function convertToHiragana(romaji) {
-  let hiragana = '';
-  let i = 0;
-
-  while (i < romaji.length) {
-    let nextFourChars = romaji.substr(i, 4);
-    let nextThreeChars = romaji.substr(i, 3);
-    let nextTwoChars = romaji.substr(i, 2);
-    let nextOneChar = romaji.substr(i, 1);
-
-    if (romajiToHiraganaMap[nextFourChars]) {
-      hiragana += romajiToHiraganaMap[nextFourChars];
-      i += 4;
-    } else if (romajiToHiraganaMap[nextThreeChars]) {
-      hiragana += romajiToHiraganaMap[nextThreeChars];
-      i += 3;
-    } else if (romajiToHiraganaMap[nextTwoChars]) {
-      hiragana += romajiToHiraganaMap[nextTwoChars];
-      i += 2;
-    } else if (romajiToHiraganaMap[nextOneChar]) {
-      hiragana += romajiToHiraganaMap[nextOneChar];
-      i += 1;
-    } else {
-      // If the current character is not found in the mapping, leave it as is.
-      hiragana += romaji[i];
-      i += 1;
-    }
-  }
-  return hiragana;
-}
-
-function kataToHira(text) {
-  return text.split('').map(char => {
-      const code = char.charCodeAt(0);
-      return (code >= 0x30A1 && code <= 0x30F6) ? String.fromCharCode(code - 0x60) : char;
-  }).join('');
-}
-
-document.getElementById("n5").checked = true;
+document.getElementById("あ").checked = true;
+document.getElementById("か").checked = true;
+document.getElementById("さ").checked = true;
+document.getElementById("た").checked = true;
+document.getElementById("な").checked = true;
+document.getElementById("は").checked = true;
+document.getElementById("ま").checked = true;
+document.getElementById("ら").checked = true;
+document.getElementById("や").checked = true;
+document.getElementById("ん").checked = true;
+document.getElementById("ゐ").checked = true;
+document.getElementById("dakuten").checked = true;
+document.getElementById("handakuten").checked = true;
+document.getElementById("hiragana").checked = true;
+document.getElementById("katakana").checked = true;
 
 const idToVariableMapping = {
-  "common": common,
-  "countries": countries,
-  "n1": n1,
-  "n2": n2,
-  "n3": n3,
-  "n4": n4,
-  "n5": n5,
-  "plants": plants,
-  "vegetables": vegetables,
-  "animals": animals,
-  "prefectures": prefectures
+  "あ": あ,
+  "か": か,
+  "さ": さ,
+  "た": た,
+  "な": な,
+  "は": は,
+  "ま": ま,
+  "ら": ら,
+  "や": や,
+  "ん": ん,
+  "ゐ": ゐ
 };
 
 const checkboxes = document.querySelectorAll('input[type="checkbox"]')

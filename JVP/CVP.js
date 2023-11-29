@@ -71,9 +71,11 @@ function question() {
         document.getElementById("result").innerHTML = "Correct";
         document.getElementById("correctAnswer").innerHTML = userInputValue + " ○";
 
-        if (!wrongWords.includes(randomWord)) {
-          doneWords.push(randomWord); //add word to list of words that wont come up again
-          if (doneWords.length >= wordPool.length) {
+        if (!(wrongWords.includes(randomWord))) { //add word to list of words that wont come up again
+          doneWords.push(randomWord);
+          
+          let wordCompare = wordPool.flat();
+          if (doneWords.length >= wordCompare.length) {
             doneWords.length = 0;
           }
         }
