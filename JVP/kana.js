@@ -256,8 +256,9 @@ function reset(event) {
 function getRandomWord(wordPool) {
   let fullWordPool = wordPool.flat();
   fullWordPool = fullWordPool.filter(item => !doneWords.includes(item));
+
   if (!dakuCheck.checked) {
-    fullWordPool = fullWordPool.filter((item) => !item || !item.handakuten);
+    fullWordPool = fullWordPool.filter((item) => !item || !item.dakuten);
   }
   if (!handakuCheck.checked) {
     fullWordPool = fullWordPool.filter((item) => !item || !item.handakuten);
@@ -313,6 +314,8 @@ document.getElementById("ん").checked = true;
 document.getElementById("ゐ").checked = true;
 hiraCheck.checked = true;
 kataCheck.checked = true;
+dakuCheck.checked = true;
+handakuCheck.checked = true;
 
 const idToVariableMapping = {
   "あ": あ,
