@@ -95,7 +95,7 @@ export const や = [
 ];
 
 export const ん = [
-    {"hiragana": "ん", "katakana":  "ン", "eng": "n", "dakuten": false, "handakuten": false},
+    {"hiragana": "ん", "katakana":  "ン", "eng": "n,nn", "dakuten": false, "handakuten": false},
     {"hiragana": "わ", "katakana":  "ワ", "eng": "wa", "dakuten": false, "handakuten": false},
     {"hiragana": "を", "katakana":  "ヲ", "eng": "wo", "dakuten": false, "handakuten": false},
 ];

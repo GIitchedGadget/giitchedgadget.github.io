@@ -10,12 +10,15 @@ import {や} from "./Kana/kanaList.js";
 import {ん} from "./Kana/kanaList.js";
 import {ゐ} from "./Kana/kanaList.js";
 
-
-
 let wordPool = [あ, か, さ, た, な, は, ま, ら, や, ん, ゐ];
 let wrongWords = [];
 let doneWords = [];
 let maxLength;
+
+const hiraCheck = document.getElementById("hiragana");
+const kataCheck = document.getElementById("katakana");
+const dakuCheck = document.getElementById("dakuten");
+const handakuCheck = document.getElementById("handakuten");
 
 if (window.screen.width >= 2000) {
   maxLength = 200;
@@ -48,7 +51,7 @@ function question() {
   //pick word
   const randomWord = getRandomWord(wordPool);
 
-  if (document.getElementById("hiragana").checked && document.getElementById("katakana").checked) {
+  if (hiraCheck.checked && kataCheck.checked) {
     if (RNG(3)) {
       document.getElementById("word").innerHTML = randomWord.katakana;
     }
@@ -56,18 +59,14 @@ function question() {
       document.getElementById("word").innerHTML = randomWord.hiragana;
     }
   }
-  else if (document.getElementById("hiragana").checked) {
+  else if (hiraCheck.checked) {
     document.getElementById("word").innerHTML = randomWord.hiragana;
   }
-  else if (document.getElementById("katakana").checked) {
+  else if (kataCheck.checked) {
     document.getElementById("word").innerHTML = randomWord.katakana;
   }
 
-  
   document.getElementById("definition").innerHTML = "Type the reading!";
-
-  const definition = document.querySelector("#definition");
-  adjustFontSize(definition);
 
   if (randomWord.eng.includes(",")) {
     answer = splitAnswers(randomWord.eng);
@@ -78,7 +77,7 @@ function question() {
   function answerCheck(event) { //defines function
     if (event.key === 'Enter') { //checks if right key was pressed
       let userInputValue = textbox.value; 
-      if (userInputValue == answer || (Array.isArray(answer) && answer.includes(userInputValue))) { //correct answer
+      if (lowerCase(userInputValue) == answer || (Array.isArray(answer) && answer.includes(lowerCase(userInputValue)))) { //correct answer
         textbox.value = "";
         textbox.disabled = true;
         answerBox.style.display = '';
@@ -86,7 +85,7 @@ function question() {
         document.getElementById("definition").innerHTML = "";
         answerBox.style.backgroundColor = '#62e776';
         document.getElementById("result").innerHTML = "Correct";
-        document.getElementById("correctAnswer").innerHTML = userInputValue + " ○";
+        document.getElementById("correctAnswer").innerHTML = lowerCase(userInputValue) + " ○";
 
         if (!(wrongWords.includes(randomWord))) { //add word to list of words that wont come up again
           doneWords.push(randomWord);
@@ -106,14 +105,13 @@ function question() {
         textbox.disabled = true;
         answerBox.style.display = '';
         bottom.style.display = '';
-        document.getElementById("definition").innerHTML = truncateText(randomWord.eng, maxLength);
-
+        document.getElementById("definition").innerHTML = "";
         answerBox.style.backgroundColor = '#de5842';
         if (userInputValue == "") {
           document.getElementById("result").innerHTML = userInputValue + "No answer ×";
         }
         else {
-          document.getElementById("result").innerHTML = userInputValue + " ×";
+          document.getElementById("result").innerHTML = lowerCase(userInputValue) + " ×";
         }
         document.getElementById("correctAnswer").innerHTML = answer + " ○";
 
@@ -137,18 +135,31 @@ function review() {
   
   //pick word
   const randomWord = getRandomWord2(wrongWords);
+  const hiraCheck = document.getElementById("hiragana");
+  const kataCheck = document.getElementById("katakana");
 
-  document.getElementById("word").innerHTML = randomWord.kanji;
+  if (hiraCheck.checked && kataCheck.checked) {
+    if (RNG(3)) {
+      document.getElementById("word").innerHTML = randomWord.katakana;
+    }
+    else {
+      document.getElementById("word").innerHTML = randomWord.hiragana;
+    }
+  }
+  else if (hiraCheck.checked) {
+    document.getElementById("word").innerHTML = randomWord.hiragana;
+  }
+  else if (kataCheck.checked) {
+    document.getElementById("word").innerHTML = randomWord.katakana;
+  }
+
   document.getElementById("definition").innerHTML = "Type the reading!";
 
-  const definition = document.querySelector("#definition");
-  adjustFontSize(definition);
-
-  if (randomWord.kana.includes(",")) {
-    answer = splitAnswers(kataToHira(randomWord.kana));
+  if (randomWord.eng.includes(",")) {
+    answer = splitAnswers(randomWord.eng);
   }
   else {
-    answer = kataToHira(randomWord.kana);
+    answer = randomWord.eng;
   }
   function answerCheck(event) { //defines function
     if (event.key === 'Enter') { //checks if right key was pressed
@@ -158,7 +169,7 @@ function review() {
         textbox.disabled = true;
         answerBox.style.display = '';
         bottom.style.display = '';
-        document.getElementById("definition").innerHTML = truncateText(randomWord.eng, maxLength);
+        document.getElementById("definition").innerHTML = "";
 
         answerBox.style.backgroundColor = '#62e776';
         document.getElementById("result").innerHTML = "Correct";
@@ -179,7 +190,7 @@ function review() {
         textbox.disabled = true;
         answerBox.style.display = '';
         bottom.style.display = '';
-        document.getElementById("definition").innerHTML = truncateText(randomWord.eng, maxLength);
+        document.getElementById("definition").innerHTML = "";
 
         answerBox.style.backgroundColor = '#de5842';
         if (userInputValue == "") {
@@ -244,7 +255,13 @@ function reset(event) {
 
 function getRandomWord(wordPool) {
   let fullWordPool = wordPool.flat();
-  fullWordPool = fullWordPool.filter((item) => !doneWords.includes(item));
+  fullWordPool = fullWordPool.filter(item => !doneWords.includes(item));
+  if (!dakuCheck.checked) {
+    fullWordPool = fullWordPool.filter((item) => !item || !item.handakuten);
+  }
+  if (!handakuCheck.checked) {
+    fullWordPool = fullWordPool.filter((item) => !item || !item.handakuten);
+  }
 
   const randomObject = fullWordPool[Math.floor(Math.random() * fullWordPool.length)];
   
@@ -270,48 +287,12 @@ function remove(word, array) {
     array.splice(index, 1);
 }
 
-const DEFAULT_FONT_SIZE = '25px';
-function adjustFontSize(element) {
-  const maxLines = 3;
-
-  let lineHeight = window.getComputedStyle(element).lineHeight;
-
-  // If line-height is "normal", use a default based on current font size.
-  if (lineHeight === "normal") {
-    lineHeight = 1.2 * parseInt(DEFAULT_FONT_SIZE);
-  } else {
-    lineHeight = parseInt(lineHeight);
-  }
-
-  const maxHeight = lineHeight * maxLines;
-
-  // If text is too long
-  if (element.offsetHeight > maxHeight) {
-    while (element.offsetHeight > maxHeight && parseInt(window.getComputedStyle(element).fontSize) > 10) { // added a minimum size of 10px for safety
-      const currentSize = parseInt(window.getComputedStyle(element).fontSize);
-      element.style.fontSize = (currentSize - 1) + "px";
-    }
-  }
-  // If text is short, revert back to the default font size
-  else if (element.style.fontSize !== DEFAULT_FONT_SIZE) {
-    element.style.fontSize = DEFAULT_FONT_SIZE;
-
-    // Check again in case the default size is too big now
-    if (element.offsetHeight > maxHeight) {
-      adjustFontSize(element);
-    }
-  }
-}
-
 function splitAnswers(str) {
-  return str.split(', ').map(item => item.trim());
+  return str.split(',').map(item => item.trim());
 }
 
-function truncateText(text, maxLength) {
-  if (text.length > maxLength) {
-    return text.slice(0, maxLength) + '...';
-  }
-  return text;
+function lowerCase(string) {
+  return string.toLowerCase();
 }
 
 function RNG(num) {
@@ -330,10 +311,8 @@ document.getElementById("ら").checked = true;
 document.getElementById("や").checked = true;
 document.getElementById("ん").checked = true;
 document.getElementById("ゐ").checked = true;
-document.getElementById("dakuten").checked = true;
-document.getElementById("handakuten").checked = true;
-document.getElementById("hiragana").checked = true;
-document.getElementById("katakana").checked = true;
+hiraCheck.checked = true;
+kataCheck.checked = true;
 
 const idToVariableMapping = {
   "あ": あ,
@@ -351,23 +330,25 @@ const idToVariableMapping = {
 
 const checkboxes = document.querySelectorAll('input[type="checkbox"]')
 checkboxes.forEach(checkbox => {
+
   checkbox.addEventListener('change', function(event) {
       const variableValue = idToVariableMapping[event.target.id];
-      if (event.target.checked) {
+      if (Array.isArray(variableValue)) {
+        if (event.target.checked) {
           wordPool.push(variableValue);
-      } else {
+        } else {
           const index = wordPool.indexOf(variableValue);
           wordPool.splice(index, 1);
+        }
+        checkboxCheck();
       }
-      checkboxCheck();
+      else {
+        checkboxCheck();
+      }
   });
 });
 
 function checkboxCheck() {
-  if (wordPool.length == 0) {
-    document.getElementById("optionsButton").disabled = true;
-  }
-  else {
-    document.getElementById("optionsButton").disabled = false;
-  }
+  const optionsButton = document.getElementById("optionsButton");
+  optionsButton.disabled = wordPool.length === 0 || (!kataCheck.checked && !hiraCheck.checked);
 }
