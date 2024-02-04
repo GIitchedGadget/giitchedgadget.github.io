@@ -79,7 +79,7 @@ export const hsk6 = [
     {"word": "被动","answer": "bei4dong4","eng": "passive"},
     {"word": "备份","answer": "bei4fen4","eng": "backup"},
     {"word": "被告","answer": "bei4gao4","eng": "defendant"},
-    {"word": "贝壳","answer": "bei4ke2","eng": "shell; conch; cowry; mother of pearl; hard outer skin; alternative reading bei4 qiao4, mostly written"},
+    {"word": "贝壳","answer": "bei4ke2","eng": "shell; conch; cowry; mother of pearl; hard outer skin"},
     {"word": "背叛","answer": "bei4pan4","eng": "to betray"},
     {"word": "背诵","answer": "bei4song4","eng": "recite; repeat from memory"},
     {"word": "备忘录","answer": "bei4wang4lu4","eng": "memorandum; aide-memoire; memorandum book"},
