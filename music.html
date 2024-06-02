@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+             音楽。
+         </title>
+
+         <meta name="description" content="hi.">
+         <meta name="author" content="gadget">
+         <meta name="robots" content="index, follow">
+
+        <link rel = "stylesheet" href = "music/music.css">
+        <link rel="icon" href="Images/yu.png" type="image/png">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    </head>
+    <body id="body">
+        <div id="preloader"></div>
+        
+        <a id="home-icon" href="/">
+            <img src="Images/yu.png" alt="Home" draggable="false">
+        </a>
+        <div class="discord-container">
+            <img src="Images/discord.png" id="discord" alt="Click to copy text" draggable="false"/>
+            <span id="textToCopy" style="display: none;">glitchedgadget</span>
+            <div id="tooltip" class="tooltip">
+            Copied!
+            </div>
+        </div>
+        <div id="navbar">
+            <a href="/">Home</a>
+            <div class="dropdown">
+                <p>Work</p>
+                <div class="dropdown-content">
+                    <a class="droptext" href="work/2023.html">2023</a>
+                    <a class="droptext" href="work/2022.html">2022</a>
+                    <a class="droptext" href="work/2021.html">2021</a>
+                    <a class="droptext" href="work/2020.html">2020</a>
+                    <a class="droptext" href="CV.html">CV</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <p>Language</p>
+                <div class="dropdown-content">
+                    <a class="droptext" href="JCP.html">Japanese Conjugation</a>
+                    <a class="droptext" href="JVP.html">Japanese Vocabulary</a>
+                    <a class="droptext" href="kana.html">Japanese Kana</a>
+                    <a class="droptext" href="CVP.html">Chinese Vocabulary</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <p>Elsewhere</p>
+                <div class="dropdown-content">
+                    <a class="droptext" href="https://open.spotify.com/user/0f8iwn8344o15iyex20no2u7y?si=4a56f7a4cd194efc" target="_blank">Spotify</a>
+                    <a class="droptext" href="https://www.roblox.com/users/126989919/profile" target="_blank">Roblox</a>
+                    <a class="droptext" href="https://enka.network/u/620288461/" target="_blank">Enka</a>
+                </div>
+            </div>
+            <a href="music.html">Music</a>
+        </div>
+        <img src="Images/mobilebutton.png" id="mobile-icon" onclick="toggleBar()">
+            <div id="sidebar">
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <a id="mobileLinks" onclick="toggleBar()" >Home</a> <br>
+                <a id="mobileLinks" class="weblink" onclick="toggleScreen(document.getElementById('work'))">Work</a> <br>
+                <a id="mobileLinks" class="weblink" onclick="toggleScreen(document.getElementById('japanese'))">Language</a> <br>
+                <a id="mobileLinks" class="weblink" onclick="toggleScreen(document.getElementById('elsewhere'))">Elsewhere</a>
+            </div>
+            <div id="work" class="toggleable-section">
+                <br><br><br><br><br><br><br><br><br><br><br>
+                <a id="mobileLinks" class="weblink" onclick="cancel(document.getElementById('work'))">Back</a> <br>
+                <a id="mobileLinks" href="work/2023.html">2023</a>
+                <a id="mobileLinks" href="work/2022.html">2022</a>
+                <a id="mobileLinks" href="work/2021.html">2021</a>
+                <a id="mobileLinks" href="work/2020.html">2020</a>
+                <a id="mobileLinks" href="CV.html">CV</a>
+            </div>
+            <div id="japanese" class="toggleable-section">
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <a id="mobileLinks" class="weblink" onclick="cancel(document.getElementById('japanese'))">Back</a> <br>
+                <a id="mobileLinks" href="JCP.html">Japanese Conjugation</a> 
+                <a id="mobileLinks" href="JVP.html">Japanese Vocabulary</a> 
+                <a id="mobileLinks" href="kana.html">Japanese Kana</a> 
+                <a id="mobileLinks" href="CVP.html">Chinese Vocabulary</a> 
+            </div>
+            <div id="elsewhere" class="toggleable-section">
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <a id="mobileLinks" class="weblink" onclick="cancel(document.getElementById('elsewhere'))">Back</a> <br>
+                <a id="mobileLinks" href="https://open.spotify.com/user/0f8iwn8344o15iyex20no2u7y?si=4a56f7a4cd194efc">Spotify</a> <br>
+                <a id="mobileLinks" href="https://www.roblox.com/users/126989919/profile">Roblox</a> <br>
+                <a id="mobileLinks" href="https://enka.network/u/620288461/">Enka</a>
+            </div>
+
+        <div class="space">
+            <br><br><br><br><br>
+        </div>
+        
+        <div class="musiccontainer">
+            <div class="namecontainer" onclick="toggleDiv('1')">
+                <p id="text">Rain Stops, Goodbye</p>
+            </div>
+            <div class="container" id="1">
+                <div class="pdfBox">
+                    <button class="download" data-file-path="music/pdf/Rain Stops, Goodbye.pdf" data-file-name="Rain Stops, Goodbye.pdf" onclick="downloadFile(this)">Download PDF</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+                <div class="audioBox">
+                    <audio controls class="audio">
+                        <source src="music/mp3/Rain Stops, Goodbye.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="gpxBox">
+                    <button class="download" data-file-path="music/gpx/Rain Stops, Goodbye.gpx" data-file-name="Rain Stops, Goodbye.gpx" onclick="downloadFile(this)">Download .gpx</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="musiccontainer" onclick="toggleDiv('2')">
+            <div class="namecontainer">
+                <p id="text">Night Journey　夜行</p>
+            </div>
+            <div class="container" id="2">
+                <div class="pdfBox">
+                    <button class="download" data-file-path="music/pdf/Night Journey.pdf" data-file-name="Night Journey.pdf" onclick="downloadFile(this)">Download PDF</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+                <div class="audioBox">
+                    <audio controls class="audio">
+                        <source src="music/mp3/Night Journey.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="gpxBox">
+                    <button class="download" data-file-path="music/gpx/Night Journey.gpx" data-file-name="Night Journey.gpx" onclick="downloadFile(this)">Download .gpx</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="musiccontainer" onclick="toggleDiv('3')">
+            <div class="namecontainer">
+                <p id="text">Kataomoi　カタオモイ</p>
+            </div>
+            <div class="container" id="3">
+                <div class="pdfBox">
+                    <button class="download" data-file-path="music/pdf/Kataomoi.pdf" data-file-name="Kataomoi.pdf" onclick="downloadFile(this)">Download PDF</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+                <div class="audioBox">
+                    <audio controls class="audio">
+                        <source src="music/mp3/Kataomoi.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="gpxBox">
+                    <button class="download" data-file-path="music/gpx/Kataomoi.gpx" data-file-name="Kataomoi.gpx" onclick="downloadFile(this)">Download .gpx</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="musiccontainer" onclick="toggleDiv('4')">
+            <div class="namecontainer">
+                <p id="text">From the Start</p>
+            </div>
+            <div class="container" id="4">
+                <div class="pdfBox">
+                    <button class="download" data-file-path="music/pdf/From the Start.pdf" data-file-name="From the Start.pdf" onclick="downloadFile(this)">Download PDF</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+                <div class="audioBox">
+                    <audio controls class="audio">
+                        <source src="music/mp3/From the Start.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="gpxBox">
+                    <button class="download" data-file-path="music/gpx/From the Start.gpx" data-file-name="From the Start.gpx" onclick="downloadFile(this)">Download .gpx</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="musiccontainer" onclick="toggleDiv('5')">
+            <div class="namecontainer">
+                <p id="text">Let Her Go</p>
+            </div>
+            <div class="container" id="5">
+                <div class="pdfBox">
+                    <button class="download" data-file-path="music/pdf/Let Her Go.pdf" data-file-name="Let Her Go.pdf" onclick="downloadFile(this)">Download PDF</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+                <div class="audioBox">
+                    <audio controls class="audio">
+                        <source src="music/mp3/Let Her Go.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="gpxBox">
+                    <button class="download" data-file-path="music/gpx/Let Her Go.gpx" data-file-name="Let Her Go.gpx" onclick="downloadFile(this)">Download .gpx</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="musiccontainer" onclick="toggleDiv('6')">
+            <div class="namecontainer">
+                <p id="text">Orion　オリオン</p>
+            </div>
+            <div class="container" id="6">
+                <div class="pdfBox">
+                    <button class="download" data-file-path="music/pdf/Orion.pdf" data-file-name="Orion.pdf" onclick="downloadFile(this)">Download PDF</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+                <div class="audioBox">
+                    <audio controls class="audio">
+                        <source src="music/mp3/Orion.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="gpxBox">
+                    <button class="download" data-file-path="music/gpx/Orion.gpx" data-file-name="Orion.gpx" onclick="downloadFile(this)">Download .gpx</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="musiccontainer" onclick="toggleDiv('7')">
+            <div class="namecontainer">
+                <p id="text">Spinning Globe　地球儀</p>
+            </div>
+            <div class="container" id="7">
+                <div class="pdfBox">
+                    <button class="download" data-file-path="music/pdf/地球儀.pdf" data-file-name="地球儀.pdf" onclick="downloadFile(this)">Download PDF</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+                <div class="audioBox">
+                    <audio controls class="audio">
+                        <source src="music/mp3/地球儀.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="gpxBox">
+                    <button class="download" data-file-path="music/gpx/地球儀.gpx" data-file-name="地球儀.gpx" onclick="downloadFile(this)">Download .gpx</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="musiccontainer" onclick="toggleDiv('8')">
+            <div class="namecontainer">
+                <p id="text">いつも何度でも</p>
+            </div>
+            <div class="container" id="8">
+                <div class="pdfBox">
+                    <button class="download" data-file-path="music/pdf/いつも何度でも.pdf" data-file-name="いつも何度でも.pdf" onclick="downloadFile(this)">Download PDF</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+                <div class="audioBox">
+                    <audio controls class="audio">
+                        <source src="music/mp3/いつも何度でも.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="gpxBox">
+                    <button class="download" data-file-path="music/gpx/いつも何度でも.gpx" data-file-name="いつも何度でも.gpx" onclick="downloadFile(this)">Download .gpx</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="musiccontainer" onclick="toggleDiv('9')">
+            <div class="namecontainer">
+                <p id="text">Theme of Ms. Okudera　奥寺先輩のテーマ</p>
+            </div>
+            <div class="container" id="9">
+                <div class="pdfBox">
+                    <button class="download" data-file-path="music/pdf/Theme of Ms. Okudera.pdf" data-file-name="Theme of Ms. Okudera.pdf" onclick="downloadFile(this)">Download PDF</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+                <div class="audioBox">
+                    <audio controls class="audio">
+                        <source src="music/mp3/Theme of Ms. Okudera.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="gpxBox">
+                    <button class="download" data-file-path="music/gpx/Theme of Ms. Okudera.gpx" data-file-name="Theme of Ms. Okudera.gpx" onclick="downloadFile(this)">Download .gpx</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="musiccontainer" onclick="toggleDiv('10')">
+            <div class="namecontainer">
+                <p id="text">Yuuhisaka　夕日坂</p>
+            </div>
+            <div class="container" id="10">
+                <div class="pdfBox">
+                    <button class="download" data-file-path="music/pdf/夕日坂.pdf" data-file-name="夕日坂.pdf" onclick="downloadFile(this)">Download PDF</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+                <div class="audioBox">
+                    <audio controls class="audio">
+                        <source src="music/mp3/夕日坂.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="gpxBox">
+                    <button class="download" data-file-path="music/gpx/夕日坂.gpx" data-file-name="夕日坂.gpx" onclick="downloadFile(this)">Download .gpx</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="musiccontainer" onclick="toggleDiv('11')">
+            <div class="namecontainer">
+                <p id="text">Irony　アイロニー</p>
+            </div>
+            <div class="container" id="11">
+                <div class="pdfBox">
+                    <button class="download" data-file-path="music/pdf/Irony.pdf" data-file-name="Irony.pdf" onclick="downloadFile(this)">Download PDF</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+                <div class="audioBox">
+                    <audio controls class="audio">
+                        <source src="music/mp3/Irony.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="gpxBox">
+                    <button class="download" data-file-path="music/gpx/Irony.gpx" data-file-name="Irony.gpx" onclick="downloadFile(this)">Download .gpx</button>
+                    <a id="link" style="display:none;"></a>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            function toggleDiv(id) {
+                console.log(id);
+            var div = document.getElementById(id);
+            if (div.style.display === 'none') {
+                div.style.display = 'flex';
+            } else {
+                div.style.display = 'none';
+            }
+        }
+
+            function downloadFile(button) {
+            var filePath = button.dataset.filePath;
+            var fileName = button.dataset.fileName;
+            var link = document.createElement('a');
+            link.href = filePath;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            }
+
+            function toggleBar() {
+                const sidebar = document.getElementById("sidebar");
+                const body = document.getElementById("body");
+                const work = document.getElementById("work");
+                const japanese = document.getElementById("japanese");
+                const elsewhere = document.getElementById("elsewhere");
+                if (window.getComputedStyle(sidebar).display === "none") {
+                    sidebar.style.display = "block";
+                    sidebar.classList.add("animation");
+                    body.classList.add("noscroll");
+                    document.body.style.overflowX = "hidden";
+                    document.body.style.overflowY = "hidden";
+                } else if (window.getComputedStyle(sidebar).display === "block") {
+                    body.classList.remove("noscroll");
+                    document.body.style.overflowX = "auto";
+                    document.body.style.overflowY = "auto";
+                    sidebar.classList.remove("animation");
+                    sidebar.style.display = "none";
+                }
+                if (work.style.display == "block") {
+                    work.style.display = "none";
+                }
+                if (japanese.style.display == "block") {
+                    japanese.style.display = "none";
+                }
+                if (elsewhere.style.display == "block") {
+                    elsewhere.style.display = "none";
+                }
+            }
+            function toggleScreen(section) {
+                if (window.getComputedStyle(section).display === "none") {
+                    section.style.display = "block";
+                    section.classList.add("animation2");
+                } else if (window.getComputedStyle(section).display === "block") {
+                    section.classList.remove("animation2");
+                    section.style.display = "none";
+                }
+            }
+            function cancel(section) {
+                section.style.display = "none";
+            }
+        </script>
+        <script type="module" src = "home.js"></script>
+    </body>
+</html>
